@@ -487,7 +487,7 @@ dialog.drawer.drawer-left{margin:0 auto 0 0}
 /* ===== terminal.css ===== */
 /* MGLSK UI — "cyber terminal" skin: shape, type and effects layered over the structural components.
    Rules: green is the only accent · magenta only in glitch frames and hard-shadow hover · square corners
-   (circles only for window lights / status dots) · mono for system voice, Archivo for display, Instrument Serif for editorial accents. */
+   (circles only for status dots) · mono for system voice, Archivo for display, Instrument Serif for editorial accents. */
 
 html{background:var(--bg)}
 body{font-weight:400;letter-spacing:0}
@@ -676,10 +676,6 @@ legend{font:500 var(--fs-xs) var(--mono);text-transform:uppercase;color:var(--ac
 dialog.modal{background:var(--surface);border:1px solid var(--border-strong);box-shadow:var(--shadow-lg);border-radius:0}
 dialog.modal::backdrop{background:var(--overlay)}
 .modal-head{border-bottom:1px solid var(--border-strong);gap:var(--sp-3);justify-content:flex-start;padding:10px var(--sp-4)}
-.modal-head::before{content:"";flex:none;width:46px;height:10px;background:
-  radial-gradient(circle at 5px 5px,var(--accent) 4.5px,transparent 5px),
-  radial-gradient(circle at 23px 5px,transparent 3.5px,var(--border-strong) 4px,var(--border-strong) 5px,transparent 5.5px),
-  radial-gradient(circle at 41px 5px,transparent 3.5px,var(--border-strong) 4px,var(--border-strong) 5px,transparent 5.5px)}
 .modal-head h3{font:500 var(--fs-xs) var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);flex:1}
 .modal-head .btn{margin-left:auto}
 .modal-foot{background:var(--surface-2);border-top-color:var(--border)}
@@ -714,9 +710,7 @@ dialog.modal::backdrop{background:var(--overlay)}
 /* ---------- terminal window, HUD, sigil (particle logo slot) ---------- */
 .terminal{background:var(--surface);border:1px solid var(--border-strong)}
 .term-bar{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--border-strong);color:var(--muted);font:400 var(--fs-xs) var(--mono);text-transform:uppercase}
-.term-bar i{width:10px;height:10px;border-radius:50%;border:1px solid var(--border-strong)}
-.term-bar i:first-child{background:var(--accent);border-color:var(--accent)}
-.term-bar .grow{text-align:center}
+.term-bar .grow{text-align:left}
 .term-body{padding:var(--sp-5);font:400 .85rem/1.7 var(--mono)}
 .term-body .prompt{color:var(--muted)}.term-body .prompt b{color:var(--accent);font-weight:400}
 .term-body .ok{color:var(--accent)}.term-body .err{color:var(--danger)}.term-body .warn{color:var(--warning)}
