@@ -1,11 +1,50 @@
 {
-  "name": "mglsk-ui",
+  "name": "@mglsk/ui",
   "version": "0.3.0",
   "description": "Terminal-styled web-app UI kit in plain HTML, CSS and vanilla JS: 66 components, WebGL effects, no build step required.",
-  "private": true,
+  "author": "MGLSK",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MGLSK/ui.git"
+  },
+  "homepage": "https://github.com/MGLSK/ui#readme",
+  "bugs": {
+    "url": "https://github.com/MGLSK/ui/issues"
+  },
+  "keywords": [
+    "ui-kit",
+    "components",
+    "css",
+    "webgl",
+    "terminal",
+    "dashboard"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": true,
   "type": "commonjs",
   "main": "dist/js/mglsk-ui.min.js",
+  "unpkg": "dist/js/mglsk-ui.min.js",
   "style": "dist/css/mglsk-ui.min.css",
+  "exports": {
+    ".": "./dist/js/mglsk-ui.min.js",
+    "./css": "./dist/css/mglsk-ui.min.css",
+    "./dist/*": "./dist/*",
+    "./css/*": "./dist/css/*",
+    "./js/*": "./dist/js/*",
+    "./fonts/*": "./dist/fonts/*",
+    "./img/*": "./dist/img/*",
+    "./src/css/*": "./css/*",
+    "./src/js/*": "./js/*",
+    "./package.json": "./package.json"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions"
+  ],
   "files": [
     "dist",
     "css",
@@ -18,32 +57,27 @@
     "README.md",
     "LICENSE",
     "CHANGELOG.md",
+    "ACCESSIBILITY.md",
     "THIRD-PARTY.md"
   ],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "npm run build:dist && npm run build:docs",
     "build:dist": "node tools/build-dist.mjs",
     "build:docs": "python3 tools/docs/build.py",
     "test": "node tools/test.mjs",
-    "test:a11y": "node tools/test/a11y.js && node tools/test/a11y-keyboard.js"
+    "test:a11y": "node tools/test/a11y.js && node tools/test/a11y-keyboard.js",
+    "check:pack": "node tools/check-pack.mjs",
+    "prepublishOnly": "npm run build && node tools/check-pack.mjs",
+    "version": "npm run build && git add -A",
+    "release:notes": "node tools/changelog-section.mjs"
   },
-  "keywords": [
-    "ui-kit",
-    "components",
-    "css",
-    "webgl",
-    "terminal",
-    "dashboard"
-  ],
-  "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 Firefox versions",
-    "last 2 Safari versions"
-  ],
   "devDependencies": {
     "axe-core": "^4.14.0",
-    "esbuild": "^0.28.2"
-  },
-  "license": "UNLICENSED",
-  "author": "MGLSK"
+    "esbuild": "^0.28.2",
+    "playwright": "^1.65.0"
+  }
 }

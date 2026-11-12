@@ -177,7 +177,7 @@ async function load(url) {
     echo "done";
 }</code></pre></figure>
   <figure class="codeblock" data-lang="bash"><figcaption><button class="btn btn-ghost btn-sm" data-copy>Copy</button></figcaption><pre><code># install and run
-npm install mglsk-ui
+npm install @mglsk/ui
 npm run dev -- --port 3000</code></pre></figure>
 </div>
 ''', [('figure.codeblock[data-lang]', 'Language label in the caption bar (js, ts, php, py, sql, bash, css, html, json).'), ('.lines', 'Line numbers.'), ('data-highlight="3,4"', 'Highlight lines.'), ('[data-copy]', 'Copy button (uses the raw source).'), ('MGLSK.highlight(src, lang)', 'Tokenizer, returns HTML.')])

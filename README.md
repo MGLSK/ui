@@ -24,6 +24,22 @@ dist/fonts, dist/img        self-hosted woff2 fonts and the logo
 
 Fonts are referenced as `../fonts/…` from the stylesheet, so keep `css/` and `fonts/` as siblings.
 
+## Install from npm (private package)
+
+`@mglsk/ui` is published as a **private** npm package. Authenticate once (`npm login`, or a token with read access in `~/.npmrc`),
+then:
+
+```bash
+npm install @mglsk/ui
+```
+
+```js
+import '@mglsk/ui/css';   // dist/css/mglsk-ui.min.css
+import '@mglsk/ui';       // dist/js/mglsk-ui.min.js (defines window.MGLSK)
+```
+
+Releases are built, verified and published by GitHub Actions; see [`RELEASING.md`](RELEASING.md).
+
 ## How it works
 
 - **CSS-first.** Components are classes (`.btn`, `.card`, `.table`…). Most work with no JS at all.
@@ -99,7 +115,9 @@ dist/       built bundles (generated)
 starter/    minimal app to copy; starter/assets is generated from dist
 examples/   dashboard, settings, login (use the unbundled source)
 components/ generated documentation, one page per component
-tools/      build-dist.mjs, docs generator (tools/docs), tests (tools/test)
+tools/      build-dist.mjs, check-pack.mjs (release guard), docs generator (tools/docs), tests (tools/test)
+.github/    CI + release workflows, dependabot
+RELEASING.md  one-time setup and how to cut a release
 ```
 
 ## Develop
@@ -109,6 +127,7 @@ npm install            # esbuild only
 npm run build:dist     # dist/ + starter/assets
 npm run build:docs     # regenerate components/*.html (python3)
 npm run build          # both
+npm run check:pack     # what would be published (also runs before every publish)
 npm test               # starter, theming + contrast matrix, 68-page error sweep, interactions, accessibility (axe + keyboard)
 npm run test:a11y      # just the accessibility suites
 ```
