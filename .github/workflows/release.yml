@@ -87,7 +87,7 @@ jobs:
           ls -l "$TARBALL"
           tar -tzf "$TARBALL" | head -5
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: npm-tarball
           path: mglsk-ui-*.tgz
