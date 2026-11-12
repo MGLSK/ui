@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accordion · MGLSK UI</title>
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/mglsk-ui.css">
+<script>(function(){try{var d=document.documentElement,l=localStorage,t=l.getItem('mglsk-theme')||'dark',a=l.getItem('mglsk-accent');d.dataset.theme=t;d.dataset.themeResolved=t==='light'||(t==='auto'&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';if(a){if(a.charAt(0)==='#'){var v=JSON.parse(l.getItem('mglsk-accent-vars')||'{}');for(var k in v)d.style.setProperty(k,v[k]);d.dataset.accent='custom'}else d.dataset.accent=a}if(l.getItem('mglsk-fx')==='off')d.dataset.fx='off'}catch(e){}})()</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="app">
+  <aside class="sidenav" id="sidenav">
+    <a class="sidenav-brand" href="../examples/dashboard.html"><span class="brand-mark"><span class="logo-mark"></span></span><span class="brand-text">MGLSK UI</span></a>
+    <nav class="sidenav-body" aria-label="Components">
+      <a class="nav-item" href="index.html"><i data-icon="panel"></i><span class="nav-label">All components</span><span class="badge badge-accent">67</span></a>
+      <div class="nav-group">Layout</div>
+      <a class="nav-item" data-nav-item href="aspect-ratio.html"><i data-icon="panel"></i><span class="nav-label">Aspect Ratio</span></a>
+      <a class="nav-item" data-nav-item href="card.html"><i data-icon="panel"></i><span class="nav-label">Card</span></a>
+      <a class="nav-item" data-nav-item href="collapsible.html"><i data-icon="panel"></i><span class="nav-label">Collapsible</span></a>
+      <a class="nav-item" data-nav-item href="direction.html"><i data-icon="panel"></i><span class="nav-label">Direction</span></a>
+      <a class="nav-item" data-nav-item href="resizable.html"><i data-icon="panel"></i><span class="nav-label">Resizable</span></a>
+      <a class="nav-item" data-nav-item href="scroll-area.html"><i data-icon="panel"></i><span class="nav-label">Scroll Area</span></a>
+      <a class="nav-item" data-nav-item href="separator.html"><i data-icon="panel"></i><span class="nav-label">Separator</span></a>
+      <a class="nav-item" data-nav-item href="sidebar.html"><i data-icon="panel"></i><span class="nav-label">Sidebar</span></a>
+      <a class="nav-item" data-nav-item href="theming.html"><i data-icon="panel"></i><span class="nav-label">Theming</span></a>
+      <a class="nav-item" data-nav-item href="typography.html"><i data-icon="panel"></i><span class="nav-label">Typography</span></a>
+      <div class="nav-group">Navigation</div>
+      <a class="nav-item" data-nav-item href="breadcrumb.html"><i data-icon="menu"></i><span class="nav-label">Breadcrumb</span></a>
+      <a class="nav-item" data-nav-item href="command.html"><i data-icon="menu"></i><span class="nav-label">Command</span></a>
+      <a class="nav-item" data-nav-item href="context-menu.html"><i data-icon="menu"></i><span class="nav-label">Context Menu</span></a>
+      <a class="nav-item" data-nav-item href="dropdown-menu.html"><i data-icon="menu"></i><span class="nav-label">Dropdown Menu</span></a>
+      <a class="nav-item" data-nav-item href="menubar.html"><i data-icon="menu"></i><span class="nav-label">Menubar</span></a>
+      <a class="nav-item" data-nav-item href="navigation-menu.html"><i data-icon="menu"></i><span class="nav-label">Navigation Menu</span></a>
+      <a class="nav-item" data-nav-item href="pagination.html"><i data-icon="menu"></i><span class="nav-label">Pagination</span></a>
+      <a class="nav-item" data-nav-item href="tabs.html"><i data-icon="menu"></i><span class="nav-label">Tabs</span></a>
+      <div class="nav-group">Forms</div>
+      <a class="nav-item" data-nav-item href="button.html"><i data-icon="edit"></i><span class="nav-label">Button</span></a>
+      <a class="nav-item" data-nav-item href="button-group.html"><i data-icon="edit"></i><span class="nav-label">Button Group</span></a>
+      <a class="nav-item" data-nav-item href="calendar.html"><i data-icon="edit"></i><span class="nav-label">Calendar</span></a>
+      <a class="nav-item" data-nav-item href="checkbox.html"><i data-icon="edit"></i><span class="nav-label">Checkbox</span></a>
+      <a class="nav-item" data-nav-item href="combobox.html"><i data-icon="edit"></i><span class="nav-label">Combobox</span></a>
+      <a class="nav-item" data-nav-item href="date-picker.html"><i data-icon="edit"></i><span class="nav-label">Date Picker</span></a>
+      <a class="nav-item" data-nav-item href="field.html"><i data-icon="edit"></i><span class="nav-label">Field</span></a>
+      <a class="nav-item" data-nav-item href="input.html"><i data-icon="edit"></i><span class="nav-label">Input</span></a>
+      <a class="nav-item" data-nav-item href="input-group.html"><i data-icon="edit"></i><span class="nav-label">Input Group</span></a>
+      <a class="nav-item" data-nav-item href="input-otp.html"><i data-icon="edit"></i><span class="nav-label">Input OTP</span></a>
+      <a class="nav-item" data-nav-item href="label.html"><i data-icon="edit"></i><span class="nav-label">Label</span></a>
+      <a class="nav-item" data-nav-item href="native-select.html"><i data-icon="edit"></i><span class="nav-label">Native Select</span></a>
+      <a class="nav-item" data-nav-item href="questionnaire.html"><i data-icon="edit"></i><span class="nav-label">Questionnaire</span></a>
+      <a class="nav-item" data-nav-item href="radio-group.html"><i data-icon="edit"></i><span class="nav-label">Radio Group</span></a>
+      <a class="nav-item" data-nav-item href="select.html"><i data-icon="edit"></i><span class="nav-label">Select</span></a>
+      <a class="nav-item" data-nav-item href="slider.html"><i data-icon="edit"></i><span class="nav-label">Slider</span></a>
+      <a class="nav-item" data-nav-item href="switch.html"><i data-icon="edit"></i><span class="nav-label">Switch</span></a>
+      <a class="nav-item" data-nav-item href="textarea.html"><i data-icon="edit"></i><span class="nav-label">Textarea</span></a>
+      <a class="nav-item" data-nav-item href="toggle.html"><i data-icon="edit"></i><span class="nav-label">Toggle</span></a>
+      <a class="nav-item" data-nav-item href="toggle-group.html"><i data-icon="edit"></i><span class="nav-label">Toggle Group</span></a>
+      <div class="nav-group">Overlays</div>
+      <a class="nav-item" data-nav-item href="alert-dialog.html"><i data-icon="copy"></i><span class="nav-label">Alert Dialog</span></a>
+      <a class="nav-item" data-nav-item href="dialog.html"><i data-icon="copy"></i><span class="nav-label">Dialog</span></a>
+      <a class="nav-item" data-nav-item href="drawer.html"><i data-icon="copy"></i><span class="nav-label">Drawer</span></a>
+      <a class="nav-item" data-nav-item href="hover-card.html"><i data-icon="copy"></i><span class="nav-label">Hover Card</span></a>
+      <a class="nav-item" data-nav-item href="popover.html"><i data-icon="copy"></i><span class="nav-label">Popover</span></a>
+      <a class="nav-item" data-nav-item href="sheet.html"><i data-icon="copy"></i><span class="nav-label">Sheet</span></a>
+      <a class="nav-item" data-nav-item href="toast.html"><i data-icon="copy"></i><span class="nav-label">Toast</span></a>
+      <a class="nav-item" data-nav-item href="tooltip.html"><i data-icon="copy"></i><span class="nav-label">Tooltip</span></a>
+      <div class="nav-group">Data display</div>
+      <a class="nav-item" data-nav-item href="accordion.html" aria-current="page"><i data-icon="bars"></i><span class="nav-label">Accordion</span></a>
+      <a class="nav-item" data-nav-item href="attachment.html"><i data-icon="bars"></i><span class="nav-label">Attachment</span></a>
+      <a class="nav-item" data-nav-item href="avatar.html"><i data-icon="bars"></i><span class="nav-label">Avatar</span></a>
+      <a class="nav-item" data-nav-item href="badge.html"><i data-icon="bars"></i><span class="nav-label">Badge</span></a>
+      <a class="nav-item" data-nav-item href="carousel.html"><i data-icon="bars"></i><span class="nav-label">Carousel</span></a>
+      <a class="nav-item" data-nav-item href="chart.html"><i data-icon="bars"></i><span class="nav-label">Chart</span></a>
+      <a class="nav-item" data-nav-item href="code-block.html"><i data-icon="bars"></i><span class="nav-label">Code Block</span></a>
+      <a class="nav-item" data-nav-item href="data-table.html"><i data-icon="bars"></i><span class="nav-label">Data Table</span></a>
+      <a class="nav-item" data-nav-item href="empty.html"><i data-icon="bars"></i><span class="nav-label">Empty</span></a>
+      <a class="nav-item" data-nav-item href="item.html"><i data-icon="bars"></i><span class="nav-label">Item</span></a>
+      <a class="nav-item" data-nav-item href="kbd.html"><i data-icon="bars"></i><span class="nav-label">Kbd</span></a>
+      <a class="nav-item" data-nav-item href="marker.html"><i data-icon="bars"></i><span class="nav-label">Marker</span></a>
+      <a class="nav-item" data-nav-item href="table.html"><i data-icon="bars"></i><span class="nav-label">Table</span></a>
+      <a class="nav-item" data-nav-item href="trace.html"><i data-icon="bars"></i><span class="nav-label">Trace</span></a>
+      <div class="nav-group">Feedback</div>
+      <a class="nav-item" data-nav-item href="alert.html"><i data-icon="bell"></i><span class="nav-label">Alert</span></a>
+      <a class="nav-item" data-nav-item href="progress.html"><i data-icon="bell"></i><span class="nav-label">Progress</span></a>
+      <a class="nav-item" data-nav-item href="skeleton.html"><i data-icon="bell"></i><span class="nav-label">Skeleton</span></a>
+      <a class="nav-item" data-nav-item href="spinner.html"><i data-icon="bell"></i><span class="nav-label">Spinner</span></a>
+      <div class="nav-group">Chat & AI</div>
+      <a class="nav-item" data-nav-item href="bubble.html"><i data-icon="mail"></i><span class="nav-label">Bubble</span></a>
+      <a class="nav-item" data-nav-item href="message.html"><i data-icon="mail"></i><span class="nav-label">Message</span></a>
+      <a class="nav-item" data-nav-item href="message-scroller.html"><i data-icon="mail"></i><span class="nav-label">Message Scroller</span></a>
+    </nav>
+    <div class="sidenav-foot row row-nowrap"><span class="avatar">RB</span><div class="nav-label grow"><div class="fw-600 text-sm">Robin B.</div><div class="text-xs text-muted">Admin</div></div></div>
+  </aside>
+  <div class="nav-backdrop"></div>
+  <header class="topbar">
+    <button class="btn btn-ghost btn-icon" data-toggle="nav" aria-label="Toggle navigation"><i data-icon="menu"></i></button>
+    <div class="topbar-search"><i data-icon="search"></i><input class="input" data-search data-nav-filter placeholder="Filter components…  Ctrl K" aria-label="Filter components"></div>
+    <div class="topbar-actions">
+      <span class="topbar-clock"><span class="dot"></span>Hasselt <span data-clock>--:--</span></span>
+      <div class="dropdown"><button class="btn btn-ghost btn-icon" data-dropdown-toggle aria-label="Theme and accent colour" aria-expanded="false"><i data-icon="palette"></i></button>
+        <div class="menu menu-right theme-menu" data-keep-open><div class="theme-panel">
+  <div class="stack-sm"><span class="label">Mode</span>
+    <div class="segmented" role="group" aria-label="Colour mode"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="true">Dark</button><button type="button" data-theme-set="auto" aria-pressed="false">Auto</button></div></div>
+  <div class="stack-sm"><span class="label">Accent · <span data-accent-label class="text-accent">green</span></span>
+    <div class="swatches" role="group" aria-label="Accent colour"><button type="button" class="swatch" data-accent-set="green" aria-pressed="true" aria-label="Green" title="Green" style="--sw-d:43 255 136;--sw-l:0 106 46"></button><button type="button" class="swatch" data-accent-set="cyan" aria-pressed="false" aria-label="Cyan" title="Cyan" style="--sw-d:43 220 255;--sw-l:0 100 130"></button><button type="button" class="swatch" data-accent-set="blue" aria-pressed="false" aria-label="Blue" title="Blue" style="--sw-d:100 150 255;--sw-l:35 80 209"></button><button type="button" class="swatch" data-accent-set="violet" aria-pressed="false" aria-label="Violet" title="Violet" style="--sw-d:176 148 255;--sw-l:102 61 209"></button><button type="button" class="swatch" data-accent-set="magenta" aria-pressed="false" aria-label="Magenta" title="Magenta" style="--sw-d:255 92 220;--sw-l:169 18 129"></button><button type="button" class="swatch" data-accent-set="red" aria-pressed="false" aria-label="Red" title="Red" style="--sw-d:255 96 110;--sw-l:178 22 49"></button><button type="button" class="swatch" data-accent-set="orange" aria-pressed="false" aria-label="Orange" title="Orange" style="--sw-d:255 159 28;--sw-l:144 72 0"></button><button type="button" class="swatch" data-accent-set="yellow" aria-pressed="false" aria-label="Yellow" title="Yellow" style="--sw-d:255 214 51;--sw-l:117 88 0"></button><input type="color" class="swatch-input" data-accent-custom aria-label="Custom accent colour" value="#2bff88"></div></div>
+</div></div></div>
+      <button class="btn btn-ghost btn-sm" data-fx-toggle aria-label="Toggle CRT effects" data-tip="CRT fx" data-tip-pos="bottom">CRT</button>
+      <a class="btn btn-sm" href="../examples/dashboard.html">Dashboard</a>
+    </div>
+  </header>
+  <main class="main" id="main" tabindex="-1">
+    <div class="page-head"><div><nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="index.html">components</a></li><li aria-current="page">accordion</li></ol></nav><h1 data-glitch>Accordion<span class="cursor">_</span></h1><p>// Vertically stacked sections built on <code>&lt;details&gt;</code>; optionally exclusive.</p></div><div class="page-actions"><span class="badge badge-accent">Data display</span></div></div>
+
+    <section class="card"><div class="card-head"><h2>Preview</h2></div><div class="card-body stack" style="">
+<div class="grid grid-2" style="align-items:start">
+  <div class="accordion"><details open><summary>Is it accessible?</summary><div class="acc-body">Yes. It uses native details/summary.</div></details><details><summary>Is it styled?</summary><div class="acc-body">Matches the terminal theme.</div></details><details><summary>Can several be open?</summary><div class="acc-body">By default, yes.</div></details></div>
+  <div class="accordion" data-accordion="single"><details open><summary>Exclusive: one</summary><div class="acc-body">Opening another closes this.</div></details><details><summary>Exclusive: two</summary><div class="acc-body">Second panel.</div></details><details><summary>Exclusive: three</summary><div class="acc-body">Third panel.</div></details></div>
+</div>
+    </div></section>
+
+    <section class="card"><div class="card-head"><h2>Markup</h2></div><div class="card-body flush"><figure class="codeblock" data-lang="html" style="border:0"><figcaption><button class="btn btn-ghost btn-sm" data-copy>Copy</button></figcaption><pre><code>&lt;div class=&quot;grid grid-2&quot; style=&quot;align-items:start&quot;&gt;
+  &lt;div class=&quot;accordion&quot;&gt;&lt;details open&gt;&lt;summary&gt;Is it accessible?&lt;/summary&gt;&lt;div class=&quot;acc-body&quot;&gt;Yes. It uses native details/summary.&lt;/div&gt;&lt;/details&gt;&lt;details&gt;&lt;summary&gt;Is it styled?&lt;/summary&gt;&lt;div class=&quot;acc-body&quot;&gt;Matches the terminal theme.&lt;/div&gt;&lt;/details&gt;&lt;details&gt;&lt;summary&gt;Can several be open?&lt;/summary&gt;&lt;div class=&quot;acc-body&quot;&gt;By default, yes.&lt;/div&gt;&lt;/details&gt;&lt;/div&gt;
+  &lt;div class=&quot;accordion&quot; data-accordion=&quot;single&quot;&gt;&lt;details open&gt;&lt;summary&gt;Exclusive: one&lt;/summary&gt;&lt;div class=&quot;acc-body&quot;&gt;Opening another closes this.&lt;/div&gt;&lt;/details&gt;&lt;details&gt;&lt;summary&gt;Exclusive: two&lt;/summary&gt;&lt;div class=&quot;acc-body&quot;&gt;Second panel.&lt;/div&gt;&lt;/details&gt;&lt;details&gt;&lt;summary&gt;Exclusive: three&lt;/summary&gt;&lt;div class=&quot;acc-body&quot;&gt;Third panel.&lt;/div&gt;&lt;/details&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></figure></div></section>
+    <section class="card"><div class="card-head"><h2>API</h2></div><div class="table-wrap"><table class="table table-compact"><thead><tr><th style="width:36%">Class / attribute</th><th>Description</th></tr></thead><tbody><tr><td><code>.accordion &gt; details &gt; summary + .acc-body</code></td><td>Markup.</td></tr><tr><td><code>[data-accordion=&quot;single&quot;]</code></td><td>Only one panel open at a time.</td></tr></tbody></table></div></section>
+    <div class="row between"><a class="btn btn-sm" href="tooltip.html">← Tooltip</a><a class="btn btn-sm" href="attachment.html">Attachment →</a></div>
+  </main>
+</div>
+<script src="../js/icons.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/core.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../js/forms.js"></script>
+<script src="../js/overlays.js"></script>
+<script src="../js/display.js"></script>
+<script src="../js/a11y.js"></script>
+<script src="../js/fx.js"></script>
+<script>
+  document.querySelector('[data-nav-filter]').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('[data-nav-item]').forEach(a => (a.hidden = !a.textContent.toLowerCase().includes(q)));
+  });
+</script>
+
+</body></html>

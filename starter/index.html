@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My app</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/mglsk-ui.min.css">
+<!-- restore the "CRT fx off" choice before first paint -->
+<script>(function(){try{var d=document.documentElement,l=localStorage,t=l.getItem('mglsk-theme')||'dark',a=l.getItem('mglsk-accent');d.dataset.theme=t;d.dataset.themeResolved=t==='light'||(t==='auto'&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';if(a){if(a.charAt(0)==='#'){var v=JSON.parse(l.getItem('mglsk-accent-vars')||'{}');for(var k in v)d.style.setProperty(k,v[k]);d.dataset.accent='custom'}else d.dataset.accent=a}if(l.getItem('mglsk-fx')==='off')d.dataset.fx='off'}catch(e){}})()</script>
+</head>
+<body>
+<!-- App shell: sidenav + topbar + main. data-nav="collapsed" / "open" is toggled by [data-toggle="nav"]. -->
+<div class="app">
+
+  <aside class="sidenav">
+    <a class="sidenav-brand" href="index.html"><span class="brand-mark"><span class="logo-mark"></span></span><span class="brand-text">My app</span></a>
+    <nav class="sidenav-body" aria-label="Main">
+      <div class="nav-group">Overview</div>
+      <a class="nav-item" href="index.html" aria-current="page"><i data-icon="home"></i><span class="nav-label">Home</span></a>
+      <a class="nav-item" href="#"><i data-icon="chart"></i><span class="nav-label">Reports</span><span class="badge badge-accent">3</span></a>
+      <a class="nav-item" href="#"><i data-icon="users"></i><span class="nav-label">People</span></a>
+      <div class="nav-group">Account</div>
+      <a class="nav-item" href="#"><i data-icon="settings"></i><span class="nav-label">Settings</span></a>
+    </nav>
+    <div class="sidenav-foot row row-nowrap"><span class="avatar">ME</span><div class="nav-label grow text-sm fw-600">Your name</div></div>
+  </aside>
+  <div class="nav-backdrop"></div>
+
+  <header class="topbar">
+    <button class="btn btn-ghost btn-icon" data-toggle="nav" aria-label="Toggle navigation"><i data-icon="menu"></i></button>
+    <div class="topbar-search"><i data-icon="search"></i><input class="input" data-search placeholder="Search…  Ctrl K" aria-label="Search"></div>
+    <div class="topbar-actions">
+      <div class="dropdown"><button class="btn btn-ghost btn-icon" data-dropdown-toggle aria-label="Theme and accent colour" aria-expanded="false"><i data-icon="palette"></i></button>
+        <div class="menu menu-right theme-menu" data-keep-open><div class="theme-panel">
+  <div class="stack-sm"><span class="label">Mode</span>
+    <div class="segmented" role="group" aria-label="Colour mode"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="true">Dark</button><button type="button" data-theme-set="auto" aria-pressed="false">Auto</button></div></div>
+  <div class="stack-sm"><span class="label">Accent · <span data-accent-label class="text-accent">green</span></span>
+    <div class="swatches" role="group" aria-label="Accent colour"><button type="button" class="swatch" data-accent-set="green" aria-pressed="true" aria-label="Green" title="Green" style="--sw-d:43 255 136;--sw-l:0 128 56"></button><button type="button" class="swatch" data-accent-set="cyan" aria-pressed="false" aria-label="Cyan" title="Cyan" style="--sw-d:43 220 255;--sw-l:0 115 150"></button><button type="button" class="swatch" data-accent-set="blue" aria-pressed="false" aria-label="Blue" title="Blue" style="--sw-d:100 150 255;--sw-l:37 84 220"></button><button type="button" class="swatch" data-accent-set="violet" aria-pressed="false" aria-label="Violet" title="Violet" style="--sw-d:176 148 255;--sw-l:107 64 220"></button><button type="button" class="swatch" data-accent-set="magenta" aria-pressed="false" aria-label="Magenta" title="Magenta" style="--sw-d:255 92 220;--sw-l:190 20 145"></button><button type="button" class="swatch" data-accent-set="red" aria-pressed="false" aria-label="Red" title="Red" style="--sw-d:255 96 110;--sw-l:200 25 55"></button><button type="button" class="swatch" data-accent-set="orange" aria-pressed="false" aria-label="Orange" title="Orange" style="--sw-d:255 159 28;--sw-l:160 80 0"></button><button type="button" class="swatch" data-accent-set="yellow" aria-pressed="false" aria-label="Yellow" title="Yellow" style="--sw-d:255 214 51;--sw-l:122 92 0"></button><input type="color" class="swatch-input" data-accent-custom aria-label="Custom accent colour" value="#2bff88"></div></div>
+</div></div></div>
+      <button class="btn btn-ghost btn-sm" data-fx-toggle aria-label="Toggle CRT effects">CRT</button>
+      <button class="btn btn-primary btn-sm" data-modal-open="#new-item"><i data-icon="plus"></i>New</button>
+    </div>
+  </header>
+
+  <main class="main" id="main" tabindex="-1">
+    <div class="page-head">
+      <div>
+        <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="index.html">home</a></li><li aria-current="page">overview</li></ol></nav>
+        <h1 data-glitch>Hello <span class="serif-i">world</span><span class="cursor">_</span></h1>
+        <p>// replace this page with your own</p>
+      </div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card stat"><div class="stat-label"><i data-icon="users"></i>Users</div><div class="stat-value">1,284</div><span class="stat-delta up"><i data-icon="trend-up"></i>8.2%</span></div>
+      <div class="card stat"><div class="stat-label"><i data-icon="cart"></i>Orders</div><div class="stat-value">342</div><span class="stat-delta down"><i data-icon="trend-down"></i>1.4%</span></div>
+      <div class="card stat"><div class="stat-label"><i data-icon="dollar"></i>Revenue</div><div class="stat-value">€48k</div><span class="stat-delta up"><i data-icon="trend-up"></i>12%</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Weekly activity</h2></div>
+      <div class="card-body"><div id="chart"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>People</h2></div>
+      <div class="table-wrap"><table class="table table-hover" data-sortable>
+        <thead><tr><th data-sort>Name</th><th data-sort>Role</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Ada</td><td>Admin</td><td><span class="badge badge-success badge-dot">Active</span></td></tr>
+          <tr><td>Grace</td><td>Editor</td><td><span class="badge badge-warning badge-dot">Invited</span></td></tr>
+          <tr><td>Linus</td><td>Viewer</td><td><span class="badge badge-dot">Inactive</span></td></tr>
+        </tbody></table></div>
+    </div>
+  </main>
+
+  <dialog class="modal" id="new-item">
+    <form method="dialog" data-validate data-demo>
+      <div class="modal-head"><h3>New item</h3><button type="button" class="btn btn-ghost btn-icon btn-sm" data-modal-close aria-label="Close"><i data-icon="x"></i></button></div>
+      <div class="modal-body stack">
+        <div class="field"><label class="label" for="name">Name <span class="req">*</span></label><input class="input" id="name" required><span class="error-text"></span></div>
+      </div>
+      <div class="modal-foot"><button type="button" class="btn" data-modal-close>Cancel</button><button class="btn btn-primary">Create</button></div>
+    </form>
+  </dialog>
+</div>
+
+<!-- One file: icons, behaviour, charts, forms, overlays, display components and the WebGL/CRT effects. -->
+<script src="assets/js/mglsk-ui.min.js"></script>
+<script>
+  MGLSK.charts.line(document.getElementById('chart'), {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    series: [{ name: 'Visits', data: [120, 180, 150, 240, 300, 220, 260] }],
+  });
+</script>
+</body>
+</html>

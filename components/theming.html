@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Theming · MGLSK UI</title>
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/mglsk-ui.css">
+<script>(function(){try{var d=document.documentElement,l=localStorage,t=l.getItem('mglsk-theme')||'dark',a=l.getItem('mglsk-accent');d.dataset.theme=t;d.dataset.themeResolved=t==='light'||(t==='auto'&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';if(a){if(a.charAt(0)==='#'){var v=JSON.parse(l.getItem('mglsk-accent-vars')||'{}');for(var k in v)d.style.setProperty(k,v[k]);d.dataset.accent='custom'}else d.dataset.accent=a}if(l.getItem('mglsk-fx')==='off')d.dataset.fx='off'}catch(e){}})()</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="app">
+  <aside class="sidenav" id="sidenav">
+    <a class="sidenav-brand" href="../examples/dashboard.html"><span class="brand-mark"><span class="logo-mark"></span></span><span class="brand-text">MGLSK UI</span></a>
+    <nav class="sidenav-body" aria-label="Components">
+      <a class="nav-item" href="index.html"><i data-icon="panel"></i><span class="nav-label">All components</span><span class="badge badge-accent">67</span></a>
+      <div class="nav-group">Layout</div>
+      <a class="nav-item" data-nav-item href="aspect-ratio.html"><i data-icon="panel"></i><span class="nav-label">Aspect Ratio</span></a>
+      <a class="nav-item" data-nav-item href="card.html"><i data-icon="panel"></i><span class="nav-label">Card</span></a>
+      <a class="nav-item" data-nav-item href="collapsible.html"><i data-icon="panel"></i><span class="nav-label">Collapsible</span></a>
+      <a class="nav-item" data-nav-item href="direction.html"><i data-icon="panel"></i><span class="nav-label">Direction</span></a>
+      <a class="nav-item" data-nav-item href="resizable.html"><i data-icon="panel"></i><span class="nav-label">Resizable</span></a>
+      <a class="nav-item" data-nav-item href="scroll-area.html"><i data-icon="panel"></i><span class="nav-label">Scroll Area</span></a>
+      <a class="nav-item" data-nav-item href="separator.html"><i data-icon="panel"></i><span class="nav-label">Separator</span></a>
+      <a class="nav-item" data-nav-item href="sidebar.html"><i data-icon="panel"></i><span class="nav-label">Sidebar</span></a>
+      <a class="nav-item" data-nav-item href="theming.html" aria-current="page"><i data-icon="panel"></i><span class="nav-label">Theming</span></a>
+      <a class="nav-item" data-nav-item href="typography.html"><i data-icon="panel"></i><span class="nav-label">Typography</span></a>
+      <div class="nav-group">Navigation</div>
+      <a class="nav-item" data-nav-item href="breadcrumb.html"><i data-icon="menu"></i><span class="nav-label">Breadcrumb</span></a>
+      <a class="nav-item" data-nav-item href="command.html"><i data-icon="menu"></i><span class="nav-label">Command</span></a>
+      <a class="nav-item" data-nav-item href="context-menu.html"><i data-icon="menu"></i><span class="nav-label">Context Menu</span></a>
+      <a class="nav-item" data-nav-item href="dropdown-menu.html"><i data-icon="menu"></i><span class="nav-label">Dropdown Menu</span></a>
+      <a class="nav-item" data-nav-item href="menubar.html"><i data-icon="menu"></i><span class="nav-label">Menubar</span></a>
+      <a class="nav-item" data-nav-item href="navigation-menu.html"><i data-icon="menu"></i><span class="nav-label">Navigation Menu</span></a>
+      <a class="nav-item" data-nav-item href="pagination.html"><i data-icon="menu"></i><span class="nav-label">Pagination</span></a>
+      <a class="nav-item" data-nav-item href="tabs.html"><i data-icon="menu"></i><span class="nav-label">Tabs</span></a>
+      <div class="nav-group">Forms</div>
+      <a class="nav-item" data-nav-item href="button.html"><i data-icon="edit"></i><span class="nav-label">Button</span></a>
+      <a class="nav-item" data-nav-item href="button-group.html"><i data-icon="edit"></i><span class="nav-label">Button Group</span></a>
+      <a class="nav-item" data-nav-item href="calendar.html"><i data-icon="edit"></i><span class="nav-label">Calendar</span></a>
+      <a class="nav-item" data-nav-item href="checkbox.html"><i data-icon="edit"></i><span class="nav-label">Checkbox</span></a>
+      <a class="nav-item" data-nav-item href="combobox.html"><i data-icon="edit"></i><span class="nav-label">Combobox</span></a>
+      <a class="nav-item" data-nav-item href="date-picker.html"><i data-icon="edit"></i><span class="nav-label">Date Picker</span></a>
+      <a class="nav-item" data-nav-item href="field.html"><i data-icon="edit"></i><span class="nav-label">Field</span></a>
+      <a class="nav-item" data-nav-item href="input.html"><i data-icon="edit"></i><span class="nav-label">Input</span></a>
+      <a class="nav-item" data-nav-item href="input-group.html"><i data-icon="edit"></i><span class="nav-label">Input Group</span></a>
+      <a class="nav-item" data-nav-item href="input-otp.html"><i data-icon="edit"></i><span class="nav-label">Input OTP</span></a>
+      <a class="nav-item" data-nav-item href="label.html"><i data-icon="edit"></i><span class="nav-label">Label</span></a>
+      <a class="nav-item" data-nav-item href="native-select.html"><i data-icon="edit"></i><span class="nav-label">Native Select</span></a>
+      <a class="nav-item" data-nav-item href="questionnaire.html"><i data-icon="edit"></i><span class="nav-label">Questionnaire</span></a>
+      <a class="nav-item" data-nav-item href="radio-group.html"><i data-icon="edit"></i><span class="nav-label">Radio Group</span></a>
+      <a class="nav-item" data-nav-item href="select.html"><i data-icon="edit"></i><span class="nav-label">Select</span></a>
+      <a class="nav-item" data-nav-item href="slider.html"><i data-icon="edit"></i><span class="nav-label">Slider</span></a>
+      <a class="nav-item" data-nav-item href="switch.html"><i data-icon="edit"></i><span class="nav-label">Switch</span></a>
+      <a class="nav-item" data-nav-item href="textarea.html"><i data-icon="edit"></i><span class="nav-label">Textarea</span></a>
+      <a class="nav-item" data-nav-item href="toggle.html"><i data-icon="edit"></i><span class="nav-label">Toggle</span></a>
+      <a class="nav-item" data-nav-item href="toggle-group.html"><i data-icon="edit"></i><span class="nav-label">Toggle Group</span></a>
+      <div class="nav-group">Overlays</div>
+      <a class="nav-item" data-nav-item href="alert-dialog.html"><i data-icon="copy"></i><span class="nav-label">Alert Dialog</span></a>
+      <a class="nav-item" data-nav-item href="dialog.html"><i data-icon="copy"></i><span class="nav-label">Dialog</span></a>
+      <a class="nav-item" data-nav-item href="drawer.html"><i data-icon="copy"></i><span class="nav-label">Drawer</span></a>
+      <a class="nav-item" data-nav-item href="hover-card.html"><i data-icon="copy"></i><span class="nav-label">Hover Card</span></a>
+      <a class="nav-item" data-nav-item href="popover.html"><i data-icon="copy"></i><span class="nav-label">Popover</span></a>
+      <a class="nav-item" data-nav-item href="sheet.html"><i data-icon="copy"></i><span class="nav-label">Sheet</span></a>
+      <a class="nav-item" data-nav-item href="toast.html"><i data-icon="copy"></i><span class="nav-label">Toast</span></a>
+      <a class="nav-item" data-nav-item href="tooltip.html"><i data-icon="copy"></i><span class="nav-label">Tooltip</span></a>
+      <div class="nav-group">Data display</div>
+      <a class="nav-item" data-nav-item href="accordion.html"><i data-icon="bars"></i><span class="nav-label">Accordion</span></a>
+      <a class="nav-item" data-nav-item href="attachment.html"><i data-icon="bars"></i><span class="nav-label">Attachment</span></a>
+      <a class="nav-item" data-nav-item href="avatar.html"><i data-icon="bars"></i><span class="nav-label">Avatar</span></a>
+      <a class="nav-item" data-nav-item href="badge.html"><i data-icon="bars"></i><span class="nav-label">Badge</span></a>
+      <a class="nav-item" data-nav-item href="carousel.html"><i data-icon="bars"></i><span class="nav-label">Carousel</span></a>
+      <a class="nav-item" data-nav-item href="chart.html"><i data-icon="bars"></i><span class="nav-label">Chart</span></a>
+      <a class="nav-item" data-nav-item href="code-block.html"><i data-icon="bars"></i><span class="nav-label">Code Block</span></a>
+      <a class="nav-item" data-nav-item href="data-table.html"><i data-icon="bars"></i><span class="nav-label">Data Table</span></a>
+      <a class="nav-item" data-nav-item href="empty.html"><i data-icon="bars"></i><span class="nav-label">Empty</span></a>
+      <a class="nav-item" data-nav-item href="item.html"><i data-icon="bars"></i><span class="nav-label">Item</span></a>
+      <a class="nav-item" data-nav-item href="kbd.html"><i data-icon="bars"></i><span class="nav-label">Kbd</span></a>
+      <a class="nav-item" data-nav-item href="marker.html"><i data-icon="bars"></i><span class="nav-label">Marker</span></a>
+      <a class="nav-item" data-nav-item href="table.html"><i data-icon="bars"></i><span class="nav-label">Table</span></a>
+      <a class="nav-item" data-nav-item href="trace.html"><i data-icon="bars"></i><span class="nav-label">Trace</span></a>
+      <div class="nav-group">Feedback</div>
+      <a class="nav-item" data-nav-item href="alert.html"><i data-icon="bell"></i><span class="nav-label">Alert</span></a>
+      <a class="nav-item" data-nav-item href="progress.html"><i data-icon="bell"></i><span class="nav-label">Progress</span></a>
+      <a class="nav-item" data-nav-item href="skeleton.html"><i data-icon="bell"></i><span class="nav-label">Skeleton</span></a>
+      <a class="nav-item" data-nav-item href="spinner.html"><i data-icon="bell"></i><span class="nav-label">Spinner</span></a>
+      <div class="nav-group">Chat & AI</div>
+      <a class="nav-item" data-nav-item href="bubble.html"><i data-icon="mail"></i><span class="nav-label">Bubble</span></a>
+      <a class="nav-item" data-nav-item href="message.html"><i data-icon="mail"></i><span class="nav-label">Message</span></a>
+      <a class="nav-item" data-nav-item href="message-scroller.html"><i data-icon="mail"></i><span class="nav-label">Message Scroller</span></a>
+    </nav>
+    <div class="sidenav-foot row row-nowrap"><span class="avatar">RB</span><div class="nav-label grow"><div class="fw-600 text-sm">Robin B.</div><div class="text-xs text-muted">Admin</div></div></div>
+  </aside>
+  <div class="nav-backdrop"></div>
+  <header class="topbar">
+    <button class="btn btn-ghost btn-icon" data-toggle="nav" aria-label="Toggle navigation"><i data-icon="menu"></i></button>
+    <div class="topbar-search"><i data-icon="search"></i><input class="input" data-search data-nav-filter placeholder="Filter components…  Ctrl K" aria-label="Filter components"></div>
+    <div class="topbar-actions">
+      <span class="topbar-clock"><span class="dot"></span>Hasselt <span data-clock>--:--</span></span>
+      <div class="dropdown"><button class="btn btn-ghost btn-icon" data-dropdown-toggle aria-label="Theme and accent colour" aria-expanded="false"><i data-icon="palette"></i></button>
+        <div class="menu menu-right theme-menu" data-keep-open><div class="theme-panel">
+  <div class="stack-sm"><span class="label">Mode</span>
+    <div class="segmented" role="group" aria-label="Colour mode"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="true">Dark</button><button type="button" data-theme-set="auto" aria-pressed="false">Auto</button></div></div>
+  <div class="stack-sm"><span class="label">Accent · <span data-accent-label class="text-accent">green</span></span>
+    <div class="swatches" role="group" aria-label="Accent colour"><button type="button" class="swatch" data-accent-set="green" aria-pressed="true" aria-label="Green" title="Green" style="--sw-d:43 255 136;--sw-l:0 106 46"></button><button type="button" class="swatch" data-accent-set="cyan" aria-pressed="false" aria-label="Cyan" title="Cyan" style="--sw-d:43 220 255;--sw-l:0 100 130"></button><button type="button" class="swatch" data-accent-set="blue" aria-pressed="false" aria-label="Blue" title="Blue" style="--sw-d:100 150 255;--sw-l:35 80 209"></button><button type="button" class="swatch" data-accent-set="violet" aria-pressed="false" aria-label="Violet" title="Violet" style="--sw-d:176 148 255;--sw-l:102 61 209"></button><button type="button" class="swatch" data-accent-set="magenta" aria-pressed="false" aria-label="Magenta" title="Magenta" style="--sw-d:255 92 220;--sw-l:169 18 129"></button><button type="button" class="swatch" data-accent-set="red" aria-pressed="false" aria-label="Red" title="Red" style="--sw-d:255 96 110;--sw-l:178 22 49"></button><button type="button" class="swatch" data-accent-set="orange" aria-pressed="false" aria-label="Orange" title="Orange" style="--sw-d:255 159 28;--sw-l:144 72 0"></button><button type="button" class="swatch" data-accent-set="yellow" aria-pressed="false" aria-label="Yellow" title="Yellow" style="--sw-d:255 214 51;--sw-l:117 88 0"></button><input type="color" class="swatch-input" data-accent-custom aria-label="Custom accent colour" value="#2bff88"></div></div>
+</div></div></div>
+      <button class="btn btn-ghost btn-sm" data-fx-toggle aria-label="Toggle CRT effects" data-tip="CRT fx" data-tip-pos="bottom">CRT</button>
+      <a class="btn btn-sm" href="../examples/dashboard.html">Dashboard</a>
+    </div>
+  </header>
+  <main class="main" id="main" tabindex="-1">
+    <div class="page-head"><div><nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="index.html">components</a></li><li aria-current="page">theming</li></ol></nav><h1 data-glitch>Theming<span class="cursor">_</span></h1><p>// Light, dark and auto modes plus eight accent colours (or any custom colour) — all driven by CSS variables and persisted.</p></div><div class="page-actions"><span class="badge badge-accent">Layout</span></div></div>
+
+    <section class="card"><div class="card-head"><h2>Preview</h2></div><div class="card-body stack" style="">
+<div class="grid grid-2" style="align-items:start">
+  <div class="card"><div class="card-head"><h3>Controls</h3></div><div class="card-body stack"><div class="theme-panel">
+  <div class="stack-sm"><span class="label">Mode</span>
+    <div class="segmented" role="group" aria-label="Colour mode"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="true">Dark</button><button type="button" data-theme-set="auto" aria-pressed="false">Auto</button></div></div>
+  <div class="stack-sm"><span class="label">Accent · <span data-accent-label class="text-accent">green</span></span>
+    <div class="swatches" role="group" aria-label="Accent colour"><button type="button" class="swatch" data-accent-set="green" aria-pressed="true" aria-label="Green" title="Green" style="--sw-d:43 255 136;--sw-l:0 106 46"></button><button type="button" class="swatch" data-accent-set="cyan" aria-pressed="false" aria-label="Cyan" title="Cyan" style="--sw-d:43 220 255;--sw-l:0 100 130"></button><button type="button" class="swatch" data-accent-set="blue" aria-pressed="false" aria-label="Blue" title="Blue" style="--sw-d:100 150 255;--sw-l:35 80 209"></button><button type="button" class="swatch" data-accent-set="violet" aria-pressed="false" aria-label="Violet" title="Violet" style="--sw-d:176 148 255;--sw-l:102 61 209"></button><button type="button" class="swatch" data-accent-set="magenta" aria-pressed="false" aria-label="Magenta" title="Magenta" style="--sw-d:255 92 220;--sw-l:169 18 129"></button><button type="button" class="swatch" data-accent-set="red" aria-pressed="false" aria-label="Red" title="Red" style="--sw-d:255 96 110;--sw-l:178 22 49"></button><button type="button" class="swatch" data-accent-set="orange" aria-pressed="false" aria-label="Orange" title="Orange" style="--sw-d:255 159 28;--sw-l:144 72 0"></button><button type="button" class="swatch" data-accent-set="yellow" aria-pressed="false" aria-label="Yellow" title="Yellow" style="--sw-d:255 214 51;--sw-l:117 88 0"></button><input type="color" class="swatch-input" data-accent-custom aria-label="Custom accent colour" value="#2bff88"></div></div>
+</div>
+    <div class="row"><button class="btn btn-icon" data-theme-toggle aria-label="Toggle light / dark"><span class="ico-sun"><i data-icon="sun"></i></span><span class="ico-moon"><i data-icon="moon"></i></span></button><span class="text-sm text-muted mono">mode: <span data-theme-label>dark</span></span></div>
+  </div></div>
+  <div class="card"><div class="card-head"><h3>Live preview</h3></div><div class="card-body stack">
+    <div class="row"><button class="btn btn-primary">Primary</button><button class="btn">Default</button><button class="btn btn-danger">Danger</button><span class="badge badge-accent">Accent</span><span class="badge badge-success badge-dot">Paid</span></div>
+    <div class="progress"><span style="width:64%"></span></div>
+    <input class="input" placeholder="Focus me to see the accent ring">
+    <div class="alert alert-info"><i data-icon="info"></i><p>Status colours (success / warning / danger / info) stay fixed; only the accent changes.</p></div>
+    <div class="segmented"><button aria-pressed="true">Daily</button><button aria-pressed="false">Weekly</button></div>
+    <div id="th-chart"></div>
+  </div></div>
+</div>
+<figure class="codeblock" data-lang="js"><figcaption><button class="btn btn-ghost btn-sm" data-copy>Copy</button></figcaption><pre><code>MGLSK.setTheme('light');          // 'light' | 'dark' | 'auto' (follows the OS live)
+MGLSK.setAccent('orange');        // preset name
+MGLSK.setAccent('#ff9f1c');       // any colour: made readable in both modes automatically
+document.addEventListener('mglsk:theme', e =&gt; console.log(e.detail)); // { theme, resolved }</code></pre></figure>
+    </div></section>
+
+    <section class="card"><div class="card-head"><h2>Markup</h2></div><div class="card-body flush"><figure class="codeblock" data-lang="html" style="border:0"><figcaption><button class="btn btn-ghost btn-sm" data-copy>Copy</button></figcaption><pre><code>&lt;div class=&quot;grid grid-2&quot; style=&quot;align-items:start&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;card-head&quot;&gt;&lt;h3&gt;Controls&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;card-body stack&quot;&gt;&lt;div class=&quot;theme-panel&quot;&gt;
+  &lt;div class=&quot;stack-sm&quot;&gt;&lt;span class=&quot;label&quot;&gt;Mode&lt;/span&gt;
+    &lt;div class=&quot;segmented&quot; role=&quot;group&quot; aria-label=&quot;Colour mode&quot;&gt;&lt;button type=&quot;button&quot; data-theme-set=&quot;light&quot; aria-pressed=&quot;false&quot;&gt;Light&lt;/button&gt;&lt;button type=&quot;button&quot; data-theme-set=&quot;dark&quot; aria-pressed=&quot;true&quot;&gt;Dark&lt;/button&gt;&lt;button type=&quot;button&quot; data-theme-set=&quot;auto&quot; aria-pressed=&quot;false&quot;&gt;Auto&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;stack-sm&quot;&gt;&lt;span class=&quot;label&quot;&gt;Accent · &lt;span data-accent-label class=&quot;text-accent&quot;&gt;green&lt;/span&gt;&lt;/span&gt;
+    &lt;div class=&quot;swatches&quot; role=&quot;group&quot; aria-label=&quot;Accent colour&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;swatch&quot; data-accent-set=&quot;green&quot; aria-pressed=&quot;true&quot; aria-label=&quot;Green&quot; title=&quot;Green&quot; style=&quot;--sw-d:43 255 136;--sw-l:0 106 46&quot;&gt;&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;swatch&quot; data-accent-set=&quot;cyan&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Cyan&quot; title=&quot;Cyan&quot; style=&quot;--sw-d:43 220 255;--sw-l:0 100 130&quot;&gt;&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;swatch&quot; data-accent-set=&quot;blue&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Blue&quot; title=&quot;Blue&quot; style=&quot;--sw-d:100 150 255;--sw-l:35 80 209&quot;&gt;&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;swatch&quot; data-accent-set=&quot;violet&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Violet&quot; title=&quot;Violet&quot; style=&quot;--sw-d:176 148 255;--sw-l:102 61 209&quot;&gt;&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;swatch&quot; data-accent-set=&quot;magenta&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Magenta&quot; title=&quot;Magenta&quot; style=&quot;--sw-d:255 92 220;--sw-l:169 18 129&quot;&gt;&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;swatch&quot; data-accent-set=&quot;red&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Red&quot; title=&quot;Red&quot; style=&quot;--sw-d:255 96 110;--sw-l:178 22 49&quot;&gt;&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;swatch&quot; data-accent-set=&quot;orange&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Orange&quot; title=&quot;Orange&quot; style=&quot;--sw-d:255 159 28;--sw-l:144 72 0&quot;&gt;&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;swatch&quot; data-accent-set=&quot;yellow&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Yellow&quot; title=&quot;Yellow&quot; style=&quot;--sw-d:255 214 51;--sw-l:117 88 0&quot;&gt;&lt;/button&gt;&lt;input type=&quot;color&quot; class=&quot;swatch-input&quot; data-accent-custom aria-label=&quot;Custom accent colour&quot; value=&quot;#2bff88&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-icon&quot; data-theme-toggle aria-label=&quot;Toggle light / dark&quot;&gt;&lt;span class=&quot;ico-sun&quot;&gt;&lt;i data-icon=&quot;sun&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;span class=&quot;ico-moon&quot;&gt;&lt;i data-icon=&quot;moon&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/button&gt;&lt;span class=&quot;text-sm text-muted mono&quot;&gt;mode: &lt;span data-theme-label&gt;dark&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;card-head&quot;&gt;&lt;h3&gt;Live preview&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;card-body stack&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;Default&lt;/button&gt;&lt;button class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;&lt;span class=&quot;badge badge-accent&quot;&gt;Accent&lt;/span&gt;&lt;span class=&quot;badge badge-success badge-dot&quot;&gt;Paid&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;progress&quot;&gt;&lt;span style=&quot;width:64%&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;input class=&quot;input&quot; placeholder=&quot;Focus me to see the accent ring&quot;&gt;
+    &lt;div class=&quot;alert alert-info&quot;&gt;&lt;i data-icon=&quot;info&quot;&gt;&lt;/i&gt;&lt;p&gt;Status colours (success / warning / danger / info) stay fixed; only the accent changes.&lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&quot;segmented&quot;&gt;&lt;button aria-pressed=&quot;true&quot;&gt;Daily&lt;/button&gt;&lt;button aria-pressed=&quot;false&quot;&gt;Weekly&lt;/button&gt;&lt;/div&gt;
+    &lt;div id=&quot;th-chart&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;figure class=&quot;codeblock&quot; data-lang=&quot;js&quot;&gt;&lt;figcaption&gt;&lt;button class=&quot;btn btn-ghost btn-sm&quot; data-copy&gt;Copy&lt;/button&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;MGLSK.setTheme(&#x27;light&#x27;);          // &#x27;light&#x27; | &#x27;dark&#x27; | &#x27;auto&#x27; (follows the OS live)
+MGLSK.setAccent(&#x27;orange&#x27;);        // preset name
+MGLSK.setAccent(&#x27;#ff9f1c&#x27;);       // any colour: made readable in both modes automatically
+document.addEventListener(&#x27;mglsk:theme&#x27;, e =&amp;gt; console.log(e.detail)); // { theme, resolved }&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</code></pre></figure></div></section>
+    <section class="card"><div class="card-head"><h2>API</h2></div><div class="table-wrap"><table class="table table-compact"><thead><tr><th style="width:36%">Class / attribute</th><th>Description</th></tr></thead><tbody><tr><td><code>html[data-theme=&quot;light|dark|auto&quot;]</code></td><td>Colour mode. <code>data-theme-resolved</code> (set by JS) is the actual mode the CSS keys off; without JS the page is dark.</td></tr><tr><td><code>html[data-accent=&quot;green|cyan|blue|violet|magenta|red|orange|yellow&quot;]</code></td><td>Accent preset. <code>custom</code> is set by <code>MGLSK.setAccent("#hex")</code>.</td></tr><tr><td><code>MGLSK.setTheme(mode)</code></td><td>Switch mode; persisted in <code>localStorage["mglsk-theme"]</code>; fires <code>mglsk:theme</code>.</td></tr><tr><td><code>MGLSK.setAccent(nameOrHex)</code></td><td>Preset or custom colour; persisted in <code>mglsk-accent</code>; fires <code>mglsk:accent</code>. Custom colours are lightened/darkened until they reach 4.5:1 against the dark and light surfaces.</td></tr><tr><td><code>MGLSK.contrast(hexA, hexB)</code></td><td>WCAG contrast ratio helper.</td></tr><tr><td><code>[data-theme-set] / [data-theme-toggle] / [data-accent-set] / input[data-accent-custom]</code></td><td>Declarative controls; state mirrored in <code>aria-pressed</code>. Wrap a popup in <code>data-keep-open</code> so clicks inside do not close the dropdown.</td></tr><tr><td><code>--accent-rgb</code></td><td>Triplet <code>r g b</code> for the current mode — use <code>rgb(var(--accent-rgb) / .2)</code> for tints and glows. Also <code>--accent</code>, <code>--accent-soft</code>, <code>--accent-deep</code>, <code>--accent-hover</code>, <code>--on-accent</code> (text colour for accent fills).</td></tr><tr><td><code>Neutrals &amp; status</code></td><td><code>--bg --surface --surface-2 --surface-3 --border --border-strong --text --muted --faint</code>; <code>--success --warning --danger --info</code> with <code>-soft</code> tints; chart series <code>--s1…--s6</code> (<code>--s1</code> follows the accent).</td></tr><tr><td><code>&lt;head&gt; snippet</code></td><td>Add the small inline script from <code>tools/docs/theme_ui.py</code> (<code>EARLY</code>) before the stylesheet paints to avoid a flash of the wrong theme. Every page in this kit already has it.</td></tr><tr><td><code>Effects</code></td><td>The WebGL dot field and particle logo read the theme: green glow on dark, ink-on-light in light mode, accent-coloured highlights.</td></tr></tbody></table></div></section>
+    <div class="row between"><a class="btn btn-sm" href="sidebar.html">← Sidebar</a><a class="btn btn-sm" href="typography.html">Typography →</a></div>
+  </main>
+</div>
+<script src="../js/icons.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/core.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../js/forms.js"></script>
+<script src="../js/overlays.js"></script>
+<script src="../js/display.js"></script>
+<script src="../js/a11y.js"></script>
+<script src="../js/fx.js"></script>
+<script>
+  document.querySelector('[data-nav-filter]').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('[data-nav-item]').forEach(a => (a.hidden = !a.textContent.toLowerCase().includes(q)));
+  });
+</script>
+<script>
+MGLSK.charts.line(document.getElementById('th-chart'), { labels: ['Mon','Tue','Wed','Thu','Fri'], height: 160, series: [{ name: 'A', data: [4,7,5,9,8] }, { name: 'B', data: [3,4,6,5,7] }] });
+</script>
+</body></html>

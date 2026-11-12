@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard · MGLSK UI</title>
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/mglsk-ui.css">
+<script>(function(){try{var d=document.documentElement,l=localStorage,t=l.getItem('mglsk-theme')||'dark',a=l.getItem('mglsk-accent');d.dataset.theme=t;d.dataset.themeResolved=t==='light'||(t==='auto'&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';if(a){if(a.charAt(0)==='#'){var v=JSON.parse(l.getItem('mglsk-accent-vars')||'{}');for(var k in v)d.style.setProperty(k,v[k]);d.dataset.accent='custom'}else d.dataset.accent=a}if(l.getItem('mglsk-fx')==='off')d.dataset.fx='off'}catch(e){}})()</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="app">
+  <aside class="sidenav" id="sidenav">
+    <a class="sidenav-brand" href="dashboard.html"><span class="brand-mark"><span class="logo-mark"></span></span><span class="brand-text">MGLSK UI</span></a>
+    <nav class="sidenav-body" aria-label="Main">
+      <div class="nav-group">Overview</div>
+      <a class="nav-item" href="dashboard.html" aria-current="page"><i data-icon="home"></i><span class="nav-label">Dashboard</span></a>
+      <a class="nav-item" href="#"><i data-icon="chart"></i><span class="nav-label">Analytics</span></a>
+      <a class="nav-item" href="#"><i data-icon="cart"></i><span class="nav-label">Orders</span><span class="badge badge-accent">12</span></a>
+      <a class="nav-item" href="#"><i data-icon="users"></i><span class="nav-label">Customers</span></a>
+      <div class="nav-group">Library</div>
+      <a class="nav-item" href="../components/index.html" ><i data-icon="panel"></i><span class="nav-label">Components</span></a>
+      <a class="nav-item" href="login.html"><i data-icon="lock"></i><span class="nav-label">Login</span></a>
+      <a class="nav-item" href="#"><i data-icon="folder"></i><span class="nav-label">Files</span></a>
+      <a class="nav-item" href="settings.html" ><i data-icon="settings"></i><span class="nav-label">Settings</span></a>
+    </nav>
+    <div class="sidenav-foot row row-nowrap"><span class="avatar">RB</span><div class="nav-label grow"><div class="fw-600 text-sm">Robin B.</div><div class="text-xs text-muted">Admin</div></div></div>
+  </aside>
+  <div class="nav-backdrop"></div>  <header class="topbar">
+    <button class="btn btn-ghost btn-icon" data-toggle="nav" aria-label="Toggle navigation"><i data-icon="menu"></i></button>
+    <div class="topbar-search"><i data-icon="search"></i><input class="input" data-search placeholder="Search…  Ctrl K" aria-label="Search"></div>
+    <div class="topbar-actions">
+      <span class="topbar-clock"><span class="dot"></span>Hasselt <span data-clock>--:--</span></span>
+      <div class="dropdown"><button class="btn btn-ghost btn-icon" data-dropdown-toggle aria-label="Theme and accent colour" aria-expanded="false"><i data-icon="palette"></i></button>
+        <div class="menu menu-right theme-menu" data-keep-open><div class="theme-panel">
+  <div class="stack-sm"><span class="label">Mode</span>
+    <div class="segmented" role="group" aria-label="Colour mode"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="true">Dark</button><button type="button" data-theme-set="auto" aria-pressed="false">Auto</button></div></div>
+  <div class="stack-sm"><span class="label">Accent · <span data-accent-label class="text-accent">green</span></span>
+    <div class="swatches" role="group" aria-label="Accent colour"><button type="button" class="swatch" data-accent-set="green" aria-pressed="true" aria-label="Green" title="Green" style="--sw-d:43 255 136;--sw-l:0 128 56"></button><button type="button" class="swatch" data-accent-set="cyan" aria-pressed="false" aria-label="Cyan" title="Cyan" style="--sw-d:43 220 255;--sw-l:0 115 150"></button><button type="button" class="swatch" data-accent-set="blue" aria-pressed="false" aria-label="Blue" title="Blue" style="--sw-d:100 150 255;--sw-l:37 84 220"></button><button type="button" class="swatch" data-accent-set="violet" aria-pressed="false" aria-label="Violet" title="Violet" style="--sw-d:176 148 255;--sw-l:107 64 220"></button><button type="button" class="swatch" data-accent-set="magenta" aria-pressed="false" aria-label="Magenta" title="Magenta" style="--sw-d:255 92 220;--sw-l:190 20 145"></button><button type="button" class="swatch" data-accent-set="red" aria-pressed="false" aria-label="Red" title="Red" style="--sw-d:255 96 110;--sw-l:200 25 55"></button><button type="button" class="swatch" data-accent-set="orange" aria-pressed="false" aria-label="Orange" title="Orange" style="--sw-d:255 159 28;--sw-l:160 80 0"></button><button type="button" class="swatch" data-accent-set="yellow" aria-pressed="false" aria-label="Yellow" title="Yellow" style="--sw-d:255 214 51;--sw-l:122 92 0"></button><input type="color" class="swatch-input" data-accent-custom aria-label="Custom accent colour" value="#2bff88"></div></div>
+</div></div></div>
+      <button class="btn btn-ghost btn-sm" data-fx-toggle aria-label="Toggle CRT effects" data-tip="CRT fx">CRT</button>
+      <div class="dropdown"><button class="btn btn-ghost btn-icon" data-dropdown-toggle aria-label="Notifications" aria-expanded="false"><i data-icon="bell"></i></button>
+        <div class="menu menu-right" style="min-width:280px"><div class="menu-label">Notifications</div>
+          <a class="menu-item" href="#"><i data-icon="check-circle"></i><span>Order #1042 shipped</span></a>
+          <a class="menu-item" href="#"><i data-icon="alert"></i><span>Payment failed for Acme BV</span></a>
+          <a class="menu-item" href="#"><i data-icon="users"></i><span>3 new customers</span></a></div></div>
+      <div class="dropdown"><button class="btn btn-ghost" data-dropdown-toggle aria-expanded="false"><span class="avatar avatar-sm">RB</span><i data-icon="chevron-down"></i></button>
+        <div class="menu menu-right"><a class="menu-item" href="settings.html"><i data-icon="user"></i>Profile</a><a class="menu-item" href="settings.html"><i data-icon="settings"></i>Settings</a><div class="menu-sep"></div><button class="menu-item danger"><i data-icon="logout"></i>Sign out</button></div></div>
+    </div>
+  </header>
+  <main class="main" id="main" tabindex="-1">
+    <div class="page-head" data-glitch-host>
+      <div><nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="#">Home</a></li><li aria-current="page">Dashboard</li></ol></nav><h1 data-glitch>System <span class="serif-i glitch">overview</span><span class="cursor">_</span></h1><p>// performance, last 12 months</p></div>
+      <div class="page-actions">
+        <div class="segmented" role="group" aria-label="Range"><button aria-pressed="false" data-value="7">7d</button><button aria-pressed="false" data-value="30">30d</button><button aria-pressed="true" data-value="12">12m</button></div>
+        <button class="btn" data-modal-open="#export"><i data-icon="download"></i>Export</button>
+        <button class="btn btn-primary" data-modal-open="#new-order"><i data-icon="plus"></i>New order</button>
+      </div>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card stat"><div class="stat-label"><i data-icon="dollar"></i>Revenue</div><div class="stat-value">€128.4k</div><span class="stat-delta up"><i data-icon="trend-up"></i>12.5%</span><div class="spark" id="sp1"></div></div>
+      <div class="card stat"><div class="stat-label"><i data-icon="cart"></i>Orders</div><div class="stat-value">1,842</div><span class="stat-delta up"><i data-icon="trend-up"></i>4.1%</span><div class="spark" id="sp2"></div></div>
+      <div class="card stat"><div class="stat-label"><i data-icon="users"></i>New customers</div><div class="stat-value">326</div><span class="stat-delta down"><i data-icon="trend-down"></i>2.3%</span><div class="spark" id="sp3"></div></div>
+      <div class="card stat"><div class="stat-label"><i data-icon="alert"></i>Refund rate</div><div class="stat-value">1.8%</div><span class="stat-delta up"><i data-icon="trend-down"></i>0.4 pt</span><div class="spark" id="sp4"></div></div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card span-2"><div class="card-head"><h2>Revenue vs. target</h2></div><div class="card-body"><div id="c-line"></div></div></div>
+      <div class="card"><div class="card-head"><h2>Sales by channel</h2></div><div class="card-body"><div id="c-donut"></div></div></div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card"><div class="card-head"><h2>Orders per weekday</h2></div><div class="card-body"><div id="c-bar"></div></div></div>
+      <div class="card"><div class="card-head"><h2>Goals</h2></div><div class="card-body stack">
+        <div class="stack-sm"><div class="row between text-sm"><span>Monthly revenue</span><b>82%</b></div><div class="progress"><span style="width:82%"></span></div></div>
+        <div class="stack-sm"><div class="row between text-sm"><span>Support SLA</span><b>94%</b></div><div class="progress success"><span style="width:94%"></span></div></div>
+        <div class="stack-sm"><div class="row between text-sm"><span>Storage used</span><b>71%</b></div><div class="progress warning"><span style="width:71%"></span></div></div>
+        <div class="stack-sm"><div class="row between text-sm"><span>Error budget</span><b>96%</b></div><div class="progress danger"><span style="width:96%"></span></div></div></div></div>
+      <div class="card"><div class="card-head"><h2>Activity</h2></div><div class="card-body"><ul class="timeline">
+        <li><b>Order #1042</b> shipped<div class="text-xs text-muted">2 min ago</div></li>
+        <li><b>Acme BV</b> upgraded to Pro<div class="text-xs text-muted">1 h ago</div></li>
+        <li>Invoice <b>INV-0931</b> paid<div class="text-xs text-muted">Yesterday</div></li>
+        <li>New user <b>j.peeters</b> invited<div class="text-xs text-muted">2 days ago</div></li></ul></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Recent orders</h2><a href="#" class="text-sm">View all</a></div>
+      <div class="table-toolbar">
+        <div class="topbar-search" style="flex:0 1 280px"><i data-icon="search"></i><input class="input input-sm" data-filter-table="#orders" placeholder="Filter orders…" aria-label="Filter orders" style="padding-left:34px"></div>
+        <span class="text-sm text-muted" id="sel-count"></span>
+        <button class="btn btn-sm ml-auto" id="bulk-del"><i data-icon="trash"></i>Delete selected</button>
+      </div>
+      <div class="table-wrap"><table class="table table-hover" id="orders" data-sortable>
+        <thead><tr><th class="check-col"><label class="check"><input type="checkbox" data-check-all="#orders" aria-label="Select all"></label></th><th data-sort>Order</th><th data-sort>Customer</th><th data-sort>Status</th><th data-sort="num" class="num">Total</th><th data-sort>Date</th><th><span class="sr-only">Actions</span></th></tr></thead>
+        <tbody id="orders-body"></tbody>
+      </table></div>
+      <div class="table-foot"><span data-page-info></span><div class="pagination" id="pager"></div></div>
+    </div>
+  </main>
+
+  <dialog class="modal" id="new-order">
+    <form method="dialog" data-validate data-demo>
+      <div class="modal-head"><h3>New order</h3><button type="button" class="btn btn-ghost btn-icon btn-sm" data-modal-close aria-label="Close"><i data-icon="x"></i></button></div>
+      <div class="modal-body stack">
+        <div class="field"><label class="label" for="no-c">Customer <span class="req">*</span></label><input class="input" id="no-c" required placeholder="Acme BV"><span class="error-text"></span></div>
+        <div class="form-grid"><div class="field"><label class="label" for="no-a">Amount</label><div class="input-group"><span class="input-addon">€</span><input class="input" id="no-a" type="number" min="1" required value="250"></div><span class="error-text"></span></div>
+        <div class="field"><label class="label" for="no-s">Status</label><select class="select" id="no-s"><option>Pending</option><option>Paid</option><option>Shipped</option></select></div></div>
+      </div>
+      <div class="modal-foot"><button type="button" class="btn" data-modal-close>Cancel</button><button class="btn btn-primary">Create order</button></div>
+    </form>
+  </dialog>
+  <dialog class="modal drawer" id="export">
+    <div class="modal-head"><h3>Export data</h3><button class="btn btn-ghost btn-icon btn-sm" data-modal-close aria-label="Close"><i data-icon="x"></i></button></div>
+    <div class="modal-body stack"><div class="field"><label class="label">Format</label><label class="check"><input type="radio" name="f" checked><span>CSV</span></label><label class="check"><input type="radio" name="f"><span>JSON</span></label></div>
+      <label class="switch"><input type="checkbox" checked><span>Include refunded orders</span></label></div>
+    <div class="modal-foot"><button class="btn" data-modal-close>Cancel</button><button class="btn btn-primary" data-modal-close onclick="MGLSK.toast({title:'Export started',message:'You will get an email when it is ready.',type:'success'})">Export</button></div>
+  </dialog>
+</div>
+<script src="../js/icons.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/core.js"></script>
+<script src="../js/charts.js"></script>
+<script src="../js/a11y.js"></script>
+<script src="../js/fx.js"></script>
+<script>
+  const C = MGLSK.charts, eur = v => '€' + (v >= 1000 ? (v / 1000).toFixed(v % 1000 ? 1 : 0) + 'k' : v);
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  C.line(document.getElementById('c-line'), { labels: months, format: eur, series: [
+    { name: 'Revenue', data: [7200,8100,7800,9400,10200,9800,11500,12100,11800,13400,14200,15600] },
+    { name: 'Target',  data: [8000,8500,9000,9500,10000,10500,11000,11500,12000,12500,13000,13500] }] });
+  C.donut(document.getElementById('c-donut'), { center: 'Orders', items: [{label:'Direct',value:820},{label:'Search',value:540},{label:'Social',value:310},{label:'Email',value:172}] });
+  C.bar(document.getElementById('c-bar'), { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], height: 220, series: [{ name: 'Web', data: [120,150,140,180,210,90,60] }, { name: 'App', data: [60,80,75,95,110,70,50] }], stacked: true });
+  [[ 'sp1',[3,4,3,5,6,5,7,8,7,9] ],[ 'sp2',[5,4,6,5,7,6,8,7,9,9] ],[ 'sp3',[8,7,8,6,7,5,6,5,6,5],'var(--s4)' ],[ 'sp4',[4,5,4,3,4,3,3,2,3,2],'var(--s2)' ]]
+    .forEach(([id, data, color]) => C.spark(document.getElementById(id), { data, color }));
+
+  const names = ['Acme BV','Globex','Initech','Umbrella','Hooli','Stark Ind.','Wayne Corp','Wonka','Soylent','Cyberdyne','Tyrell','Aperture'];
+  const st = { Paid: 'success', Pending: 'warning', Shipped: 'info', Refunded: 'danger' }, sts = Object.keys(st);
+  const body = document.getElementById('orders-body');
+  for (let i = 0; i < 24; i++) {
+    const s = sts[(i * 7) % 4], total = 90 + ((i * 137) % 900), d = new Date(2026, 10, 12 - i);
+    body.insertAdjacentHTML('beforeend', `<tr><td class="check-col"><label class="check"><input type="checkbox" aria-label="Select row"></label></td>
+      <td class="mono">#${1042 - i}</td><td><div class="row row-nowrap"><span class="avatar avatar-sm">${names[i % 12][0]}</span>${names[i % 12]}</div></td>
+      <td><span class="badge badge-dot badge-${st[s]}">${s}</span></td><td class="num" data-value="${total}">€${total.toFixed(2)}</td>
+      <td data-value="${d.toISOString()}">${d.toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}</td>
+      <td class="text-right"><div class="dropdown"><button class="btn btn-ghost btn-icon btn-sm" data-dropdown-toggle aria-label="Row actions"><i data-icon="more"></i></button><div class="menu menu-right"><button class="menu-item"><i data-icon="eye"></i>View</button><button class="menu-item"><i data-icon="edit"></i>Edit</button><div class="menu-sep"></div><button class="menu-item danger"><i data-icon="trash"></i>Delete</button></div></div></td></tr>`);
+  }
+  MGLSK.renderIcons();
+  MGLSK.paginate(document.getElementById('orders'), 8, document.getElementById('pager'));
+  const upd = () => { const n = body.querySelectorAll('tr[aria-selected="true"]').length; document.getElementById('sel-count').textContent = n ? n + ' selected' : ''; };
+  document.addEventListener('change', upd);
+  document.getElementById('bulk-del').onclick = async () => {
+    const rows = [...body.querySelectorAll('tr[aria-selected="true"]')];
+    if (!rows.length) return MGLSK.toast({ title: 'Nothing selected', message: 'Tick some rows first.', type: 'warning' });
+    if (await MGLSK.confirm({ title: `Delete ${rows.length} orders?`, message: 'This cannot be undone.', confirmText: 'Delete', danger: true })) { rows.forEach(r => r.remove()); upd(); MGLSK.toast({ title: 'Deleted', type: 'success' }); }
+  };
+</script>
+</body></html>

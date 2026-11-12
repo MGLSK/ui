@@ -1,0 +1,92 @@
+/* MGLSK UI — design tokens: "cyber terminal".
+ *
+ * THEMING MODEL
+ *   <html data-theme="dark|light|auto" data-accent="green|cyan|blue|violet|magenta|red|orange|yellow">
+ *   - data-theme-resolved="dark|light" is what the CSS keys off. JS keeps it in sync (see MGLSK.setTheme); with no JS the page is dark.
+ *   - Accent colours are stored as "r g b" triplets, one per mode (--accent-d / --accent-l), so alpha variants and glows
+ *     can be derived:  rgb(var(--accent-rgb) / .2).  Custom colours: MGLSK.setAccent('#ff9f1c').
+ *   - Magenta is reserved for glitch frames; accents that clash with it (magenta, violet) swap the glitch colour.
+ */
+@font-face{font-family:"Archivo";src:url("../fonts/Archivo-normal.woff2") format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap}
+@font-face{font-family:"Instrument Serif";src:url("../fonts/InstrumentSerif-normal.woff2") format("woff2");font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Serif";src:url("../fonts/InstrumentSerif-italic.woff2") format("woff2");font-style:italic;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url("../fonts/JetBrainsMono-normal.woff2") format("woff2");font-weight:100 800;font-display:swap}
+
+/* ---------- accent presets (dark-mode triplet / light-mode triplet; the light ones are darkened so accent text reaches >= 4.5:1 on every light surface, incl. tinted ones) ---------- */
+:root{--accent-d:43 255 136;--accent-l:0 106 46}
+html[data-accent="cyan"]   {--accent-d:43 220 255; --accent-l:0 100 130}
+html[data-accent="blue"]   {--accent-d:100 150 255;--accent-l:35 80 209}
+html[data-accent="violet"] {--accent-d:176 148 255;--accent-l:102 61 209}
+html[data-accent="magenta"]{--accent-d:255 92 220; --accent-l:169 18 129}
+html[data-accent="red"]    {--accent-d:255 96 110; --accent-l:178 22 49}
+html[data-accent="orange"] {--accent-d:255 159 28; --accent-l:144 72 0}
+html[data-accent="yellow"] {--accent-d:255 214 51; --accent-l:117 88 0}
+
+:root{
+  /* ---------- DARK (default) ---------- */
+  --on-accent-d:#050807; --on-accent-l:#ffffff;
+  --accent-rgb:var(--accent-d); --on-accent:var(--on-accent-d); --on-danger:#050807;
+  --bg-rgb:5 8 7; --ink-rgb:226 239 231;
+  --bg:#050807; --surface:#070b09; --surface-2:#09100d; --surface-3:#0f1914;
+  --border:#1a2620; --border-strong:#2a3b32;
+  --text:#e2efe7; --muted:#7d8f85; --faint:#718379;
+  --glitch:#ff2bd6;
+  --success:#2bff88; --success-soft:rgba(43,255,136,.1);
+  --warning:#ffb62b; --warning-soft:rgba(255,182,43,.1);
+  --danger:#ff5470;  --danger-soft:rgba(255,84,112,.1); --danger-rgb:255 84 112;
+  --info:#4cc3ea;    --info-soft:rgba(76,195,234,.1);
+  --s2:#4cc3ea; --s3:#ffb62b; --s4:#7d8f85; --s5:#a78bfa; --s6:#ff2bd6;
+  --glow-k:1;                                   /* 1 = neon glow on, 0 = off (light mode) */
+  --scan:rgba(255,255,255,.022); --grain-o:.09;
+  --shadow-sm:none;
+  --shadow:0 0 0 1px var(--border-strong),0 12px 32px rgba(0,0,0,.6);
+  --shadow-lg:0 0 0 1px var(--border-strong),0 24px 64px rgba(0,0,0,.8);
+  --overlay:rgba(2,4,3,.78);
+  color-scheme:dark;
+}
+
+/* ---------- LIGHT ---------- */
+html[data-theme-resolved="light"]{
+  --accent-rgb:var(--accent-l); --on-accent:var(--on-accent-l); --on-danger:#ffffff;
+  --bg-rgb:243 246 244; --ink-rgb:12 21 17;
+  --bg:#f3f6f4; --surface:#ffffff; --surface-2:#eef3f0; --surface-3:#e1e9e4;
+  --border:#d5dfd9; --border-strong:#aab9b0;
+  --text:#0c1511; --muted:#4a5a52; --faint:#5b6b63;
+  --glitch:#d11aa5;
+  --success:#0a7a3a; --success-soft:rgba(10,122,58,.1);
+  --warning:#8f5200; --warning-soft:rgba(143,82,0,.1);
+  --danger:#c4203a;  --danger-soft:rgba(196,32,58,.08); --danger-rgb:196 32 58;
+  --info:#0a6f99;    --info-soft:rgba(10,111,153,.08);
+  --s2:#0f7c8f; --s3:#a05c00; --s4:#5b6b63; --s5:#6a45d6; --s6:#c4157d;
+  --glow-k:0;
+  --scan:rgba(0,0,0,.03); --grain-o:.05;
+  --shadow:0 0 0 1px var(--border-strong),0 12px 32px rgba(12,21,17,.14);
+  --shadow-lg:0 0 0 1px var(--border-strong),0 24px 64px rgba(12,21,17,.22);
+  --overlay:rgba(12,21,17,.5);
+  color-scheme:light;
+}
+
+/* accents whose colour collides with the magenta glitch channel swap it */
+html[data-accent="magenta"],html[data-accent="violet"]{--glitch:#2bd6ff}
+html[data-theme-resolved="light"][data-accent="magenta"],html[data-theme-resolved="light"][data-accent="violet"]{--glitch:#0a86b3}
+
+/* ---------- derived from the accent (identical in both modes) ---------- */
+:root{
+  --accent:rgb(var(--accent-rgb));
+  --accent-soft:rgb(var(--accent-rgb) / .1);
+  --accent-deep:color-mix(in srgb,var(--accent) 45%,#000);    /* hard offset shadow */
+  --accent-hover:color-mix(in srgb,var(--accent) 82%,#fff);
+  --accent-fg:var(--on-accent);
+  --s1:var(--accent);
+
+  --radius-sm:0; --radius:0; --radius-lg:0;
+  --hard:5px 5px 0;           /* hard offset shadow */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px;
+  --font:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --fs-xs:.72rem; --fs-sm:.8rem; --fs:.9375rem; --fs-lg:1.125rem; --fs-xl:1.6rem; --fs-2xl:2.4rem;
+  --topbar-h:52px; --sidenav-w:248px; --sidenav-w-collapsed:60px;
+  --focus:0 0 0 2px var(--bg),0 0 0 4px var(--accent);
+}
+html[data-theme-resolved="light"]{--accent-hover:color-mix(in srgb,var(--accent) 85%,#000)}

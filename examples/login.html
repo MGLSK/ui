@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in · MGLSK UI</title>
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/mglsk-ui.css">
+<script>(function(){try{var d=document.documentElement,l=localStorage,t=l.getItem('mglsk-theme')||'dark',a=l.getItem('mglsk-accent');d.dataset.theme=t;d.dataset.themeResolved=t==='light'||(t==='auto'&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';if(a){if(a.charAt(0)==='#'){var v=JSON.parse(l.getItem('mglsk-accent-vars')||'{}');for(var k in v)d.style.setProperty(k,v[k]);d.dataset.accent='custom'}else d.dataset.accent=a}if(l.getItem('mglsk-fx')==='off')d.dataset.fx='off'}catch(e){}})()</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<main class="auth" id="main" tabindex="-1">
+  <section class="auth-art">
+    <div class="row between">
+      <a class="row" href="dashboard.html" style="color:var(--text)"><span class="brand-mark" style="display:grid"><span class="logo-mark"></span></span><b class="h1" style="font-size:1.15rem">MGLSK UI<span class="cursor">_</span></b></a>
+      <div class="row"><span class="eyebrow"><span class="dot"></span> online</span><div class="dropdown"><button class="btn btn-ghost btn-icon" data-dropdown-toggle aria-label="Theme and accent colour" aria-expanded="false"><i data-icon="palette"></i></button>
+        <div class="menu menu-right theme-menu" data-keep-open><div class="theme-panel">
+  <div class="stack-sm"><span class="label">Mode</span>
+    <div class="segmented" role="group" aria-label="Colour mode"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="true">Dark</button><button type="button" data-theme-set="auto" aria-pressed="false">Auto</button></div></div>
+  <div class="stack-sm"><span class="label">Accent · <span data-accent-label class="text-accent">green</span></span>
+    <div class="swatches" role="group" aria-label="Accent colour"><button type="button" class="swatch" data-accent-set="green" aria-pressed="true" aria-label="Green" title="Green" style="--sw-d:43 255 136;--sw-l:0 128 56"></button><button type="button" class="swatch" data-accent-set="cyan" aria-pressed="false" aria-label="Cyan" title="Cyan" style="--sw-d:43 220 255;--sw-l:0 115 150"></button><button type="button" class="swatch" data-accent-set="blue" aria-pressed="false" aria-label="Blue" title="Blue" style="--sw-d:100 150 255;--sw-l:37 84 220"></button><button type="button" class="swatch" data-accent-set="violet" aria-pressed="false" aria-label="Violet" title="Violet" style="--sw-d:176 148 255;--sw-l:107 64 220"></button><button type="button" class="swatch" data-accent-set="magenta" aria-pressed="false" aria-label="Magenta" title="Magenta" style="--sw-d:255 92 220;--sw-l:190 20 145"></button><button type="button" class="swatch" data-accent-set="red" aria-pressed="false" aria-label="Red" title="Red" style="--sw-d:255 96 110;--sw-l:200 25 55"></button><button type="button" class="swatch" data-accent-set="orange" aria-pressed="false" aria-label="Orange" title="Orange" style="--sw-d:255 159 28;--sw-l:160 80 0"></button><button type="button" class="swatch" data-accent-set="yellow" aria-pressed="false" aria-label="Yellow" title="Yellow" style="--sw-d:255 214 51;--sw-l:122 92 0"></button><input type="color" class="swatch-input" data-accent-custom aria-label="Custom accent colour" value="#2bff88"></div></div>
+</div></div></div></div>
+    </div>
+    <div class="sigil"><canvas id="logo" aria-label="Particle logo"></canvas><span class="mid"></span><b></b></div>
+    <div>
+      <h1 data-glitch style="font-size:clamp(2rem,4vw,3.4rem)">Sign in to your <span class="serif-i">workspace</span><span class="cursor">_</span></h1>
+      <div class="hud mt-4"><span>mark.svg</span><span>pts <span id="pts">7,200</span></span><span id="ro">x 0 y 0</span></div>
+    </div>
+  </section>
+
+  <section class="auth-form">
+    <div class="terminal">
+      <div class="term-bar"><i></i><i></i><i></i><span class="grow">~/mglsk/login</span><span>80×24</span></div>
+      <form class="term-body stack" data-validate data-demo novalidate>
+        <div class="prompt"><b>guest@mglsk:~$</b> ./login --interactive</div>
+        <div class="field"><label class="label" for="u">// email</label><input class="input" id="u" type="email" required placeholder="you@company.be" autocomplete="username"><span class="error-text"></span></div>
+        <div class="field"><label class="label" for="p">// password</label><input class="input" id="p" type="password" required minlength="8" placeholder="••••••••" autocomplete="current-password" data-error="Min. 8 characters."><span class="error-text"></span></div>
+        <div class="row between"><label class="check"><input type="checkbox" checked><span class="text-sm">Keep me signed in</span></label><a class="text-sm mono" href="#">forgot?</a></div>
+        <div class="row"><button class="btn btn-primary" type="submit">Sign in →</button><a class="btn btn-ghost" href="dashboard.html">Skip</a></div>
+        <div class="comment">Demo: nothing is sent.</div>
+      </form>
+    </div>
+  </section>
+</main>
+<script src="../js/icons.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/core.js"></script>
+<script src="../js/forms.js"></script>
+<script src="../js/a11y.js"></script>
+<script src="../js/fx.js"></script>
+<script>
+  const LOGO = 'M1018.01,470.44l0.07-71.75l-181.65-0.17l77.36-314.31L517.3,398.22l-10.33-0.01l-396.48-314l77.21,313.7 L6.26,397.73l-0.07,71.75l199.16,0.19l36.17,146.95L95.22,732.49l44.25,55.88l120.77-95.65l60.68,246.54l69.29-16.73l-68.54-278.46 l190.45-150.83l190.45,150.83l-68.54,278.47l69.3,16.72l60.68-246.53l120.77,95.65l44.25-55.88l-146.3-115.86l36.03-146.37 L1018.01,470.44z M763.04,398.45l-131.07-0.12l162.85-128.97L763.04,398.45z M745.39,470.18l-24.07,97.79l-123.65-97.93 L745.39,470.18z M229.46,269.36L392.02,398.1l-130.9-0.12L229.46,269.36z M426.81,469.88l-123.86,98.09l-24.18-98.23L426.81,469.88z';
+  const api = MGLSK.fx.particles(document.getElementById('logo'), { path: LOGO, viewBox: [1024, 1024] }, { readout: document.getElementById('ro') });
+  document.getElementById('pts').textContent = api.count.toLocaleString();
+</script>
+</body>
+</html>

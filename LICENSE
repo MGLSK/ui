@@ -1,0 +1,26 @@
+MGLSK UI — Proprietary Software Licence Notice
+
+Copyright (c) 2026 MGLSK. All rights reserved.
+
+This software, including its source code, compiled/minified bundles, stylesheets, scripts, documentation, example pages,
+component demonstrations, design tokens and the MGLSK name and logo (together, the "Software"), is the confidential and
+proprietary property of MGLSK.
+
+No licence or right of any kind is granted to you except as expressly agreed in a separate written agreement with MGLSK.
+Without that written agreement you may not:
+
+  - use, run or deploy the Software, in whole or in part;
+  - copy, modify, merge, translate or create derivative works of the Software;
+  - distribute, sublicense, sell, rent, lease, publish or otherwise make the Software available to any third party;
+  - disclose the source code to any third party;
+  - remove or alter any copyright, proprietary or licence notice.
+
+Third-party components. The font files in fonts/ (Archivo, Instrument Serif, JetBrains Mono) are not owned by MGLSK. They are
+licensed to everyone under the SIL Open Font License 1.1 (texts in fonts/licenses/, summary in THIRD-PARTY.md), and that
+licence applies to them independently of this notice.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL MGLSK BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR ITS USE.
+
+Contact MGLSK for licensing enquiries.
