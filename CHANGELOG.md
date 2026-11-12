@@ -25,6 +25,8 @@
 - **Forced colours / contrast preferences:** `forced-colors: active` and `prefers-contrast: more` styles.
 
 ### Changed
+- CRT scanlines and film grain now render on the page background only (beneath the app, same layer as the WebGL dot field), so
+  components are never overlaid; the topbar is opaque so the layers do not show through it.
 - `.card-head` styles both `h2` and `h3`; docs and examples use `h2`. Toast default timeout is 5 s.
 
 ## 0.2.0 — 2026-11-12

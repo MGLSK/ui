@@ -1380,7 +1380,7 @@
 /* MGLSK UI FX — terminal effects. Raw WebGL1, no dependencies.
  *
  *  Auto on load (opt out with <html data-fx="off"> or the [data-fx-toggle] button, which persists):
- *    - scanline + grain overlays
+ *    - scanline + grain layers (background only, beneath the app)
  *    - WebGL dot field behind the app (pointer-reactive, scan sweep)
  *    - live clock [data-clock], text decode on [data-decode] / .nav-label / headings, glitch on [data-glitch]
  *    - reveal-on-scroll for .reveal
