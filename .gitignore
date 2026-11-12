@@ -3,3 +3,6 @@ node_modules/
 .DS_Store
 *.tgz
 *.map
+release-notes.md
+__pycache__/
+*.pyc

@@ -1,5 +1,21 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- **CI/CD (GitHub Actions):** `ci.yml` (build, generated-files-in-sync check, pack guard, full test suite on every PR/push) and
+  `release.yml` (tag `vX.Y.Z` -> verify -> approval -> `npm publish` as a private package -> GitHub release with the tarball).
+  Manual dry-run mode. Dependabot for actions and dev dependencies. See `RELEASING.md`.
+- `tools/check-pack.mjs` release guard (`npm run check:pack`, also `prepublishOnly`) and `tools/changelog-section.mjs`.
+- `exports` map (`@mglsk/ui`, `@mglsk/ui/css`, `/dist/*`, `/src/*`).
+
+### Changed
+- Package renamed to the scoped **`@mglsk/ui`**; `"private": true` replaced by `publishConfig.access = "restricted"` so it can be
+  published as a private package. Tests use a local `playwright` dev dependency instead of a global install.
+
+### Fixed
+- `ACCESSIBILITY.md` was missing from the published file list.
+
 ## 0.3.0 — 2026-11-12
 
 ### Accessibility

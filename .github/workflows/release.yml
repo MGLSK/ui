@@ -1,0 +1,163 @@
+name: Release
+
+# Publishes @mglsk/ui as a PRIVATE npm package (publishConfig.access = restricted).
+#   - push a tag  vX.Y.Z   -> verify, publish, create a GitHub release with the tarball
+#   - run manually         -> verify + `npm publish --dry-run` only (nothing is published) unless you untick "dry run"
+# One-time setup and the release steps are in RELEASING.md.
+
+on:
+  push:
+    tags: ['v[0-9]+.[0-9]+.[0-9]+*']
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run: verify and `npm publish --dry-run`, publish nothing'
+        type: boolean
+        default: true
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify and pack
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      tarball: ${{ steps.pack.outputs.tarball }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Resolve version and validate the tag
+        id: meta
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "package.json version: $VERSION"
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            if [ "$GITHUB_REF_NAME" != "v$VERSION" ]; then
+              echo "::error::Tag $GITHUB_REF_NAME does not match package.json version v$VERSION"; exit 1
+            fi
+            git fetch --no-tags origin main
+            if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+              echo "::error::Tag $GITHUB_REF_NAME points at a commit that is not on main. Release from main only."; exit 1
+            fi
+          fi
+
+      - run: npm ci
+
+      - name: Install Chromium (browser tests)
+        run: npx playwright install --with-deps chromium
+
+      - name: Build
+        run: npm run build
+
+      - name: Generated files are up to date
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git status --short
+            echo "::error::Generated files are out of date for this commit. Run 'npm run build' and commit before tagging."
+            exit 1
+          fi
+
+      - name: Pack guard
+        run: npm run check:pack
+
+      - name: Tests
+        run: npm test
+
+      - name: Pack tarball
+        id: pack
+        run: |
+          npm pack --ignore-scripts >/dev/null
+          TARBALL=$(ls mglsk-ui-*.tgz)
+          echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
+          ls -l "$TARBALL"
+          tar -tzf "$TARBALL" | head -5
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: npm-tarball
+          path: mglsk-ui-*.tgz
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    name: Publish to npm (private)
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # A GitHub Environment named "npm": add required reviewers there for a manual approval gate before anything is published.
+    # NPM_TOKEN may be stored on the environment (preferred) or as a repository secret.
+    environment: npm
+    permissions:
+      contents: write # create the GitHub release
+    env:
+      VERSION: ${{ needs.verify.outputs.version }}
+      TARBALL: ${{ needs.verify.outputs.tarball }}
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: npm-tarball
+
+      - name: Check the npm token is present
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            if [ "$DRY_RUN" = "true" ]; then echo "::warning::NPM_TOKEN is not set; dry run continues without registry checks."; exit 0; fi
+            echo "::error::Secret NPM_TOKEN is not set (see RELEASING.md)."; exit 1
+          fi
+
+      - name: Refuse to overwrite an existing version
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          [ -n "$NODE_AUTH_TOKEN" ] || { echo "no token: skipping existence check (dry run)"; exit 0; }
+          NAME=$(node -p "require('./package.json').name")
+          if OUT=$(npm view "$NAME@$VERSION" version 2>&1); then
+            echo "::error::$NAME@$VERSION is already published. Bump the version."; exit 1
+          elif echo "$OUT" | grep -q "E404"; then
+            echo "$NAME@$VERSION is not published yet: OK"
+          else
+            echo "$OUT"; echo "::error::Could not query the registry (bad token or no access to the scope?)."; exit 1
+          fi
+
+      - name: Publish (restricted / private)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            npm publish "./$TARBALL" --access restricted --dry-run
+          else
+            npm publish "./$TARBALL" --access restricted
+          fi
+
+      - name: Create GitHub release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node tools/changelog-section.mjs "$VERSION" > release-notes.md
+          PRE=""; case "$VERSION" in *-*) PRE="--prerelease";; esac
+          gh release create "$GITHUB_REF_NAME" "$TARBALL" --verify-tag --title "$GITHUB_REF_NAME" --notes-file release-notes.md $PRE
