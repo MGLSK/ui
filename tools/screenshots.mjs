@@ -1,5 +1,5 @@
 // Regenerates docs/screenshots/*.png from the pages in this repo (Chromium via Playwright).
-//   node tools/screenshots.mjs            (CHROMIUM=/path/to/chrome to override the browser)
+//   node tools/screenshots.mjs [name ...]   (no names = all; CHROMIUM=/path/to/chrome overrides the browser)
 import { createRequire } from 'node:module';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -23,10 +23,14 @@ const SHOTS = [
   ['chart', 'components/chart.html', 'dark'],
   ['calendar', 'components/calendar.html', 'light'],
   ['trace', 'components/trace.html', 'dark'],
+  ['network', 'components/network.html', 'dark'],
+  ['network-light', 'components/network.html', 'light'],
 ];
 
 const b = await chromium.launch({ executablePath, args: ['--no-sandbox', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+const only = process.argv.slice(2);
 for (const [name, page, theme, accent, act] of SHOTS) {
+  if (only.length && !only.includes(name)) continue;
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
   await ctx.addInitScript(([t, a]) => { try { localStorage.setItem('mglsk-theme', t); a && localStorage.setItem('mglsk-accent', a); } catch {} }, [theme, accent]);
   const p = await ctx.newPage();

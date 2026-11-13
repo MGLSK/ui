@@ -319,3 +319,11 @@ html[data-fx="off"] .brand-text::after,html[data-fx="off"] .trace-row[data-statu
   mark,.marker{background:Canvas;color:CanvasText;text-decoration:underline}
   .alert{border-left-width:6px}
 }
+
+/* network: neon edges and cubes (glow fades out in light mode via --glow-k) */
+.chart .net-flow{filter:drop-shadow(0 0 4px color-mix(in srgb,var(--c) calc(70% * var(--glow-k)),transparent))}
+.chart .net-top,.chart .net-left,.chart .net-right{filter:drop-shadow(0 0 3px color-mix(in srgb,var(--c) calc(40% * var(--glow-k)),transparent))}
+.chart .net-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.chart .net-status.danger{animation:net-pulse 1.1s ease-in-out infinite}
+@keyframes net-pulse{50%{opacity:.25}}
+html[data-fx="off"] .chart :is(.net-flow,.net-status){animation:none!important}

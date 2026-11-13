@@ -1,11 +1,11 @@
 # MGLSK UI
 
-A terminal-styled UI kit for web apps: **66 components**, an app shell, SVG charts and WebGL effects, in plain HTML, CSS and
+A terminal-styled UI kit for web apps: **68 components**, an app shell, SVG charts and WebGL effects, in plain HTML, CSS and
 vanilla JavaScript. No framework, no runtime dependencies. A build step is optional.
 
 ```
-dist/css/mglsk-ui.min.css     91 kB   (17.6 kB gzip)
-dist/js/mglsk-ui.min.js       55 kB   (19.7 kB gzip)   icons + theme + behaviour + charts + forms + overlays + display + a11y + effects
+dist/css/mglsk-ui.min.css    102 kB   (19.8 kB gzip)
+dist/js/mglsk-ui.min.js       81 kB   (27.5 kB gzip)   icons + theme + behaviour + charts + forms + overlays + display + a11y + effects
 dist/fonts, dist/img        self-hosted woff2 fonts and the logo
 ```
 
@@ -27,6 +27,7 @@ Dark mode with the default green accent, unless noted. Light mode and every acce
 | ![Component library index](docs/screenshots/components-index.png)<br>**Component library** | ![Theming page](docs/screenshots/theming.png)<br>**Theming** (mode + 8 accents) |
 | ![Data table](docs/screenshots/data-table.png)<br>**Data table** | ![Charts](docs/screenshots/chart.png)<br>**Charts** |
 | ![Calendar, light](docs/screenshots/calendar.png)<br>**Calendar** (light) | ![Trace](docs/screenshots/trace.png)<br>**Trace** |
+| ![Isometric network graph, dark](docs/screenshots/network.png)<br>**Network**: isometric node graph | ![Isometric network graph, light](docs/screenshots/network-light.png)<br>**Network** (light) |
 
 Regenerate them with `npm run screenshots` (needs Chromium; set `CHROMIUM=/path/to/chrome` if it is not at `/usr/bin/chromium`).
 
@@ -77,6 +78,7 @@ Releases are built, verified and published by GitHub Actions; see [`RELEASING.md
 | `MGLSK.toast({ title, message, type, timeout, action })` | Toast notification |
 | `MGLSK.confirm({ title, message, confirmText, danger })` | Promise-based confirm dialog |
 | `MGLSK.charts.line / bar / donut / spark(el, opts)` | SVG charts (re-render on resize, themed by `--s1…--s6`) |
+| `MGLSK.charts.network(el, { nodes, links })` | Isometric node graph with animated data links; hover/focus lights up neighbours |
 | `MGLSK.calendar(el, opts)`, `MGLSK.pagination(el, opts)` | Programmatic calendar / pagination |
 | `MGLSK.paginate(table, perPage, pager)` | Table pagination; returns `{ draw, setPerPage }` |
 | `MGLSK.scroller(el)` | Chat scroller: `append(node)`, `toEnd()` |

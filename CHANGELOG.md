@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Added
+- **Network** component: `MGLSK.charts.network()` draws an isometric node graph (cubes on a floor grid, floating layers, orthogonal links with animated traffic, status lights). Hover/focus lights up neighbours, nodes are keyboard-operable buttons, emits `mglsk:network`, ships a screen-reader table, follows the theme/accent and stops animating with reduced motion or the CRT toggle. Added to the dashboard example.
 - **CI/CD (GitHub Actions):** `ci.yml` (build, generated-files-in-sync check, pack guard, full test suite on every PR/push) and
   `release.yml` (tag `vX.Y.Z` -> verify -> approval -> `npm publish` as a private package -> GitHub release with the tarball).
   Manual dry-run mode. Dependabot for actions and dev dependencies. See `RELEASING.md`.
