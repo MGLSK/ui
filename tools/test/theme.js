@@ -11,6 +11,8 @@ const rgbOf = s => (s.match(/[\d.]+/g) || []).slice(0, 3).map(Number);
   const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
   const css = (sel, prop) => p.evaluate(([s, pr]) => getComputedStyle(document.querySelector(s))[pr], [sel, prop]);
   const tok = name => p.evaluate(n => getComputedStyle(document.documentElement).getPropertyValue(n).trim(), name);
+  // wait for the media-query change to be applied instead of sleeping a fixed time (flaky on slow runners)
+  const resolved = v => p.waitForFunction(x => document.documentElement.dataset.themeResolved === x, v, { timeout: 3000 }).catch(() => {});
   const colour = async name => { const v = await p.evaluate(n => { const e = document.createElement('i'); e.style.color = `var(${n})`; document.body.append(e); const c = getComputedStyle(e).color; e.remove(); return c; }, name); return rgbOf(v); };
   const lum = c => { const f = v => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; }; return .2126 * f(c[0]) + .7152 * f(c[1]) + .0722 * f(c[2]); };
   const ratio = (a, c) => { const x = lum(a), y = lum(c); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
@@ -27,9 +29,9 @@ const rgbOf = s => (s.match(/[\d.]+/g) || []).slice(0, 3).map(Number);
   t('control state synced', (await p.getAttribute('[data-theme-set="light"] >> nth=0', 'aria-pressed')) === 'true');
 
   // --- auto follows the OS live
-  await p.evaluate(() => MGLSK.setTheme('auto')); await p.emulateMedia({ colorScheme: 'dark' }); await p.waitForTimeout(100);
+  await p.evaluate(() => MGLSK.setTheme('auto')); await p.emulateMedia({ colorScheme: 'dark' }); await resolved('dark');
   t('auto + OS dark -> dark', (await p.getAttribute('html', 'data-theme-resolved')) === 'dark');
-  await p.emulateMedia({ colorScheme: 'light' }); await p.waitForTimeout(100);
+  await p.emulateMedia({ colorScheme: 'light' }); await resolved('light');
   t('auto follows OS change live -> light', (await p.getAttribute('html', 'data-theme-resolved')) === 'light');
   await p.emulateMedia({ colorScheme: 'dark' });
 
