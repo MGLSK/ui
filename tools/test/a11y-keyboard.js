@@ -193,7 +193,7 @@ const URL = p => 'file://' + ROOT + '/' + p;
   await p.close();
 
   /* ---------- reflow @320px (1.4.10) + zoom ---------- */
-  const pages = fs.readdirSync(ROOT + '/components').filter(f => f.endsWith('.html')).map(f => 'components/' + f).concat(['examples/dashboard.html', 'examples/settings.html', 'examples/login.html', 'starter/index.html']);
+  const pages = fs.readdirSync(ROOT + '/components').filter(f => f.endsWith('.html')).map(f => 'components/' + f).concat(['index.html', 'usage.html', 'examples/dashboard.html', 'examples/settings.html', 'examples/login.html', 'starter/index.html']);
   const wide = [];
   for (const u of pages) {
     const q = await ctx.newPage(); await q.setViewportSize({ width: 320, height: 700 }); await q.goto(URL(u)); await q.waitForTimeout(120);

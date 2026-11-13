@@ -67,7 +67,8 @@
   "scripts": {
     "build": "npm run build:dist && npm run build:docs",
     "build:dist": "node tools/build-dist.mjs",
-    "build:docs": "python3 tools/docs/build.py",
+    "build:docs": "python3 tools/docs/build.py && python3 tools/docs/site.py",
+    "build:site": "node tools/build-site.mjs",
     "test": "node tools/test.mjs",
     "test:a11y": "node tools/test/a11y.js && node tools/test/a11y-keyboard.js",
     "check:pack": "node tools/check-pack.mjs",

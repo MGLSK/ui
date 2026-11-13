@@ -10,10 +10,10 @@ keyboard and assistive-technology users, and — just as important — what has 
 
 | Check | Scope | Result |
 |---|---|---|
-| **axe-core 4.14**, rules for WCAG 2.0/2.1/2.2 A + AA and best practice | 73 pages × dark and light + 16 open states (menus, dialogs, pickers, palettes, toasts…) | **0 violations** (1 documented exception, below) |
+| **axe-core 4.14**, rules for WCAG 2.0/2.1/2.2 A + AA and best practice | 75 pages × dark and light + 16 open states (menus, dialogs, pickers, palettes, toasts…) | **0 violations** (1 documented exception, below) |
 | **Keyboard & behaviour suite** (`tools/test/a11y-keyboard.js`) | focus management, roles/state, live regions, dismissible hover content, pausable motion, reflow, text spacing, visible focus, forced colours | 73 checks |
 | **Contrast matrix** (`tools/test/theme.js`) | 8 accents × 2 modes × all text/fill/status token pairs, plus tinted surfaces | every pair ≥ 4.5:1 |
-| **Reflow** (WCAG 1.4.10) | all 73 pages at 320 px wide, geometry-based | no horizontal page scroll, nothing cut off |
+| **Reflow** (WCAG 1.4.10) | all 75 pages at 320 px wide, geometry-based | no horizontal page scroll, nothing cut off |
 | **Text spacing** (WCAG 1.4.12) | line-height 1.5, letter-spacing .12em, word-spacing .16em on 7 pages | no clipped text |
 | **Visible focus** (WCAG 2.4.7) | Tab through 12 pages (≤ 70 stops each) | every stop has an outline or ring |
 
