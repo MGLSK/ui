@@ -7,6 +7,7 @@
   `release.yml` (tag `vX.Y.Z` -> verify -> approval -> `npm publish` as a private package -> GitHub release with the tarball).
   Manual dry-run mode. Dependabot for actions and dev dependencies. See `RELEASING.md`.
 - `tools/check-pack.mjs` release guard (`npm run check:pack`, also `prepublishOnly`) and `tools/changelog-section.mjs`.
+- **Screenshots** in the README (`docs/screenshots/`, not shipped in the npm package) and `npm run screenshots` to regenerate them.
 - `exports` map (`@mglsk/ui`, `@mglsk/ui/css`, `/dist/*`, `/src/*`).
 
 ### Changed

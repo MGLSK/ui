@@ -73,7 +73,8 @@
     "check:pack": "node tools/check-pack.mjs",
     "prepublishOnly": "npm run build && node tools/check-pack.mjs",
     "version": "npm run build && git add -A",
-    "release:notes": "node tools/changelog-section.mjs"
+    "release:notes": "node tools/changelog-section.mjs",
+    "screenshots": "node tools/screenshots.mjs"
   },
   "devDependencies": {
     "axe-core": "^4.14.0",
