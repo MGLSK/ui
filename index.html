@@ -1,1 +1,82 @@
-<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=components/index.html"><title>MGLSK UI</title><a href="components/index.html">Components</a> · <a href="examples/dashboard.html">Dashboard example</a>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MGLSK UI: terminal-styled UI kit</title>
+<meta name="description" content="MGLSK UI: a terminal-styled UI kit for web apps in plain HTML, CSS and vanilla JavaScript.">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/mglsk-ui.css">
+<script>(function(){try{var d=document.documentElement,l=localStorage,t=l.getItem('mglsk-theme')||'dark',a=l.getItem('mglsk-accent');d.dataset.theme=t;d.dataset.themeResolved=t==='light'||(t==='auto'&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';if(a){if(a.charAt(0)==='#'){var v=JSON.parse(l.getItem('mglsk-accent-vars')||'{}');for(var k in v)d.style.setProperty(k,v[k]);d.dataset.accent='custom'}else d.dataset.accent=a}if(l.getItem('mglsk-fx')==='off')d.dataset.fx='off'}catch(e){}})()</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="app">
+  <aside class="sidenav" id="sidenav">
+    <a class="sidenav-brand" href="index.html"><span class="brand-mark"><span class="logo-mark"></span></span><span class="brand-text">MGLSK UI</span></a>
+    <nav class="sidenav-body" aria-label="Documentation">
+      <a class="nav-item" href="index.html" aria-current="page"><i data-icon="home"></i><span class="nav-label">Home</span></a>
+      <a class="nav-item" href="usage.html"><i data-icon="file"></i><span class="nav-label">Usage guide</span></a>
+      <a class="nav-item" href="components/index.html"><i data-icon="panel"></i><span class="nav-label">Components</span></a>
+      <a class="nav-item" href="examples/dashboard.html"><i data-icon="chart"></i><span class="nav-label">Dashboard example</span></a>
+      <a class="nav-item" href="examples/settings.html"><i data-icon="settings"></i><span class="nav-label">Settings example</span></a>
+      <a class="nav-item" href="examples/login.html"><i data-icon="lock"></i><span class="nav-label">Login example</span></a>
+      <a class="nav-item" href="starter/index.html"><i data-icon="folder"></i><span class="nav-label">Starter app</span></a>
+    </nav>
+    <div class="sidenav-foot text-xs text-muted nav-label">Proprietary · all rights reserved</div>
+  </aside>
+  <div class="nav-backdrop"></div>
+  <header class="topbar">
+    <button class="btn btn-ghost btn-icon" data-toggle="nav" aria-label="Toggle navigation"><i data-icon="menu"></i></button>
+    <a class="btn btn-ghost btn-sm" href="usage.html">Usage</a><a class="btn btn-ghost btn-sm" href="components/index.html">Components</a><a class="btn btn-ghost btn-sm" href="examples/dashboard.html">Examples</a>
+    <div class="topbar-actions">
+      <div class="dropdown"><button class="btn btn-ghost btn-icon" data-dropdown-toggle aria-label="Theme and accent colour" aria-expanded="false"><i data-icon="palette"></i></button>
+        <div class="menu menu-right theme-menu" data-keep-open><div class="theme-panel">
+  <div class="stack-sm"><span class="label">Mode</span>
+    <div class="segmented" role="group" aria-label="Colour mode"><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="true">Dark</button><button type="button" data-theme-set="auto" aria-pressed="false">Auto</button></div></div>
+  <div class="stack-sm"><span class="label">Accent · <span data-accent-label class="text-accent">green</span></span>
+    <div class="swatches" role="group" aria-label="Accent colour"><button type="button" class="swatch" data-accent-set="green" aria-pressed="true" aria-label="Green" title="Green" style="--sw-d:43 255 136;--sw-l:0 106 46"></button><button type="button" class="swatch" data-accent-set="cyan" aria-pressed="false" aria-label="Cyan" title="Cyan" style="--sw-d:43 220 255;--sw-l:0 100 130"></button><button type="button" class="swatch" data-accent-set="blue" aria-pressed="false" aria-label="Blue" title="Blue" style="--sw-d:100 150 255;--sw-l:35 80 209"></button><button type="button" class="swatch" data-accent-set="violet" aria-pressed="false" aria-label="Violet" title="Violet" style="--sw-d:176 148 255;--sw-l:102 61 209"></button><button type="button" class="swatch" data-accent-set="magenta" aria-pressed="false" aria-label="Magenta" title="Magenta" style="--sw-d:255 92 220;--sw-l:169 18 129"></button><button type="button" class="swatch" data-accent-set="red" aria-pressed="false" aria-label="Red" title="Red" style="--sw-d:255 96 110;--sw-l:178 22 49"></button><button type="button" class="swatch" data-accent-set="orange" aria-pressed="false" aria-label="Orange" title="Orange" style="--sw-d:255 159 28;--sw-l:144 72 0"></button><button type="button" class="swatch" data-accent-set="yellow" aria-pressed="false" aria-label="Yellow" title="Yellow" style="--sw-d:255 214 51;--sw-l:117 88 0"></button><input type="color" class="swatch-input" data-accent-custom aria-label="Custom accent colour" value="#2bff88"></div></div>
+</div></div></div>
+      <button class="btn btn-ghost btn-sm" data-fx-toggle aria-label="Toggle CRT effects">CRT</button>
+    </div>
+  </header>
+  <main class="main" id="main" tabindex="-1">
+    <section class="hero" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:var(--sp-6);align-items:center">
+      <div class="stack-lg">
+        <span class="eyebrow">// terminal-styled ui kit</span>
+        <h1 tabindex="-1" style="font-size:clamp(2.4rem,5vw,4.2rem)">Interfaces with a <span class="serif-i">signal</span><span class="cursor">_</span></h1>
+        <p class="lead">Dashboards, forms, overlays, charts and an isometric network graph, in plain HTML, CSS and vanilla JavaScript. Themeable, accessible, no framework.</p>
+        <div class="row"><a class="btn btn-primary" href="usage.html">Read the usage guide →</a><a class="btn" href="components/index.html">Browse components</a><a class="btn" href="examples/dashboard.html">Open the dashboard</a></div>
+      </div>
+      <div><div class="sigil" style="height:clamp(220px,32vw,380px);margin:24px"><canvas id="logo" aria-hidden="true"></canvas><span class="mid"></span><b></b></div><div class="hud"><span>mark.svg</span><span id="ro">x 0 y 0</span></div></div>
+    </section>
+
+    <div class="stack-sm"><span class="eyebrow">// examples</span><h2>See it in use</h2></div>
+    <div class="grid grid-auto" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"><a class="card card-hover" href="examples/dashboard.html" style="color:inherit"><img src="docs/screenshots/dashboard-dark.png" alt="Screenshot: Dashboard" loading="lazy" style="width:100%;display:block;border-bottom:1px solid var(--border)"><div class="card-body"><b class="mono" style="text-transform:uppercase;font-size:.8rem">Dashboard</b></div></a><a class="card card-hover" href="examples/settings.html" style="color:inherit"><img src="docs/screenshots/settings.png" alt="Screenshot: Settings" loading="lazy" style="width:100%;display:block;border-bottom:1px solid var(--border)"><div class="card-body"><b class="mono" style="text-transform:uppercase;font-size:.8rem">Settings</b></div></a><a class="card card-hover" href="examples/login.html" style="color:inherit"><img src="docs/screenshots/login.png" alt="Screenshot: Login" loading="lazy" style="width:100%;display:block;border-bottom:1px solid var(--border)"><div class="card-body"><b class="mono" style="text-transform:uppercase;font-size:.8rem">Login</b></div></a><a class="card card-hover" href="components/network.html" style="color:inherit"><img src="docs/screenshots/network.png" alt="Screenshot: Network graph" loading="lazy" style="width:100%;display:block;border-bottom:1px solid var(--border)"><div class="card-body"><b class="mono" style="text-transform:uppercase;font-size:.8rem">Network graph</b></div></a><a class="card card-hover" href="components/data-table.html" style="color:inherit"><img src="docs/screenshots/data-table.png" alt="Screenshot: Data table" loading="lazy" style="width:100%;display:block;border-bottom:1px solid var(--border)"><div class="card-body"><b class="mono" style="text-transform:uppercase;font-size:.8rem">Data table</b></div></a><a class="card card-hover" href="components/theming.html" style="color:inherit"><img src="docs/screenshots/theming.png" alt="Screenshot: Theming" loading="lazy" style="width:100%;display:block;border-bottom:1px solid var(--border)"><div class="card-body"><b class="mono" style="text-transform:uppercase;font-size:.8rem">Theming</b></div></a></div>
+
+    <div class="stack-sm"><span class="eyebrow">// quick start</span><h2>Two files and you are running</h2></div>
+    <figure class="codeblock" data-lang="html"><figcaption><button class="btn btn-ghost btn-sm" data-copy>Copy</button></figcaption><pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/mglsk-ui.min.css&quot;&gt;
+&lt;script src=&quot;assets/js/mglsk-ui.min.js&quot;&gt;&lt;/script&gt;   &lt;!-- end of &lt;body&gt; --&gt;</code></pre></figure>
+    <p class="text-sm text-muted">Copy <a href="starter/index.html">the starter</a> or <code>dist/</code> into your project. More in the <a href="usage.html">usage guide</a>.</p>
+
+    <div class="features" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--sp-4)">
+      <div class="card"><div class="card-body stack-sm"><span class="eyebrow">68 components</span><b>Everything an app needs</b><span class="text-sm text-muted">Tables, forms, dialogs, command palette, calendar, charts, chat scroller, agent trace.</span></div></div>
+      <div class="card"><div class="card-body stack-sm"><span class="eyebrow">theming</span><b>Light, dark, auto and 8 accents</b><span class="text-sm text-muted">Switch at runtime or bring any colour; every pair is contrast-checked.</span></div></div>
+      <div class="card"><div class="card-body stack-sm"><span class="eyebrow">a11y</span><b>WCAG 2.2 AA target</b><span class="text-sm text-muted">0 axe violations across all pages in both themes, plus a keyboard suite.</span></div></div>
+      <div class="card"><div class="card-body stack-sm"><span class="eyebrow">dependency-free</span><b>CSS-first, declarative JS</b><span class="text-sm text-muted">Behaviour hangs off <code>data-</code> attributes. No build step required.</span></div></div>
+    </div>
+  </main>
+</div>
+<script src="js/icons.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/core.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/forms.js"></script>
+<script src="js/overlays.js"></script>
+<script src="js/display.js"></script>
+<script src="js/a11y.js"></script>
+<script src="js/fx.js"></script>
+<script>
+  MGLSK.fx.particles(document.getElementById('logo'), { path: 'M1018.01,470.44l0.07-71.75l-181.65-0.17l77.36-314.31L517.3,398.22l-10.33-0.01l-396.48-314l77.21,313.7 L6.26,397.73l-0.07,71.75l199.16,0.19l36.17,146.95L95.22,732.49l44.25,55.88l120.77-95.65l60.68,246.54l69.29-16.73l-68.54-278.46 l190.45-150.83l190.45,150.83l-68.54,278.47l69.3,16.72l60.68-246.53l120.77,95.65l44.25-55.88l-146.3-115.86l36.03-146.37 L1018.01,470.44z M763.04,398.45l-131.07-0.12l162.85-128.97L763.04,398.45z M745.39,470.18l-24.07,97.79l-123.65-97.93 L745.39,470.18z M229.46,269.36L392.02,398.1l-130.9-0.12L229.46,269.36z M426.81,469.88l-123.86,98.09l-24.18-98.23L426.81,469.88z', viewBox: [1024, 1024] }, { readout: document.getElementById('ro') });
+</script>
+</body></html>

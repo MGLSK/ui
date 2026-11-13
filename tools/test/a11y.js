@@ -29,7 +29,7 @@ const STATES = {
 
 (async () => {
   const b = await chromium.launch({ executablePath, args: ['--no-sandbox'] });
-  const files = [].concat(fs.readdirSync(ROOT + '/components').filter(f => f.endsWith('.html')).map(f => 'components/' + f), ['examples/dashboard.html', 'examples/settings.html', 'examples/login.html', 'starter/index.html']);
+  const files = [].concat(fs.readdirSync(ROOT + '/components').filter(f => f.endsWith('.html')).map(f => 'components/' + f), ['index.html', 'usage.html', 'examples/dashboard.html', 'examples/settings.html', 'examples/login.html', 'starter/index.html']);
   const only = process.env.ONLY ? new RegExp(process.env.ONLY) : null;
   const found = {}; let audits = 0;
   for (const theme of ['dark', 'light']) {
