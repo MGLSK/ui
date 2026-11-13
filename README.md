@@ -9,6 +9,27 @@ dist/js/mglsk-ui.min.js       55 kB   (19.7 kB gzip)   icons + theme + behaviour
 dist/fonts, dist/img        self-hosted woff2 fonts and the logo
 ```
 
+## Screenshots
+
+Dark mode with the default green accent, unless noted. Light mode and every accent come from the same CSS (see
+[theming](components/theming.html)).
+
+| | |
+|---|---|
+| ![Dashboard, dark](docs/screenshots/dashboard-dark.png)<br>**Dashboard** (`examples/dashboard.html`) | ![Dashboard, light](docs/screenshots/dashboard-light.png)<br>**Light mode** |
+| ![Dashboard with the violet accent](docs/screenshots/dashboard-violet.png)<br>**Violet accent** | ![New order dialog](docs/screenshots/dialog.png)<br>**Dialog** |
+| ![Login with the particle logo](docs/screenshots/login.png)<br>**Login** with the WebGL particle logo | ![Settings form](docs/screenshots/settings.png)<br>**Settings** (tabs, fields, input groups) |
+
+### Components
+
+| | |
+|---|---|
+| ![Component library index](docs/screenshots/components-index.png)<br>**Component library** | ![Theming page](docs/screenshots/theming.png)<br>**Theming** (mode + 8 accents) |
+| ![Data table](docs/screenshots/data-table.png)<br>**Data table** | ![Charts](docs/screenshots/chart.png)<br>**Charts** |
+| ![Calendar, light](docs/screenshots/calendar.png)<br>**Calendar** (light) | ![Trace](docs/screenshots/trace.png)<br>**Trace** |
+
+Regenerate them with `npm run screenshots` (needs Chromium; set `CHROMIUM=/path/to/chrome` if it is not at `/usr/bin/chromium`).
+
 ## Quick start
 
 1. Copy `starter/` (it carries its own `assets/`), or copy `dist/` into your project.
