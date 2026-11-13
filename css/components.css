@@ -247,3 +247,31 @@ dialog.drawer.drawer-left{margin:0 auto 0 0}
 .spark svg{width:100%;height:100%}
 .spark .line{fill:none;stroke:var(--c,var(--s1));stroke-width:2}
 .spark .area{fill:var(--c,var(--s1));opacity:.12}
+
+/* ---------- Network (isometric node graph, rendered by js/charts.js) ---------- */
+.chart .net-floor{fill:rgb(var(--accent-rgb) / .035);stroke:var(--border-strong);stroke-width:1}
+.chart .net-grid{fill:none;stroke:var(--border);stroke-width:1;stroke-dasharray:2 5}
+.chart .net-edge{fill:none;stroke:var(--border-strong);stroke-width:1.5;stroke-linejoin:round}
+.chart .net-flow{fill:none;stroke:var(--c);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:3 13;animation:net-flow 1s linear infinite}
+@keyframes net-flow{to{stroke-dashoffset:-16}}
+.chart .net-link[data-status="down"] .net-edge{stroke:var(--danger);stroke-dasharray:4 6}
+.chart .net-node{cursor:pointer;outline:none}
+.chart .net-top{fill:color-mix(in srgb,var(--c) 26%,var(--surface));stroke:var(--c);stroke-width:1.25;stroke-linejoin:round}
+.chart .net-left{fill:color-mix(in srgb,var(--c) 11%,var(--bg));stroke:var(--c);stroke-width:1.25;stroke-linejoin:round}
+.chart .net-right{fill:color-mix(in srgb,var(--c) 4%,var(--bg));stroke:var(--c);stroke-width:1.25;stroke-linejoin:round}
+.chart .net-stem{fill:none;stroke:var(--c);stroke-width:1;stroke-dasharray:2 3;opacity:.6}
+.chart .net-shadow{fill:rgb(var(--accent-rgb) / .08);stroke:var(--c);stroke-width:1;stroke-dasharray:2 3;opacity:.6}
+.chart .net-label{fill:var(--muted);font-size:10px;paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+.chart .net-status{stroke:var(--bg);stroke-width:1.5}
+.chart .net-status.ok{fill:var(--success)}.chart .net-status.warn{fill:var(--warning)}.chart .net-status.danger{fill:var(--danger)}
+.chart .net-node,.chart .net-link{transition:opacity .15s}
+.chart.net-focus .net-node:not(.on){opacity:.28}
+.chart.net-focus .net-link:not(.on){opacity:.14}
+.chart .net-node:hover .net-top,.chart .net-node:focus-visible .net-top,.chart .net-node.sel .net-top{fill:color-mix(in srgb,var(--c) 55%,var(--surface))}
+.chart .net-node:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.chart .net-node:hover .net-label,.chart .net-node:focus-visible .net-label,.chart .net-node.sel .net-label{fill:var(--text)}
+@media (forced-colors:active){
+  .chart .net-top,.chart .net-left,.chart .net-right,.chart .net-shadow,.chart .net-floor{fill:Canvas;stroke:CanvasText}
+  .chart .net-edge,.chart .net-flow,.chart .net-stem{stroke:CanvasText}
+  .chart .net-label{fill:CanvasText;stroke:Canvas}
+}

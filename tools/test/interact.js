@@ -184,6 +184,28 @@ const URL = p => 'file://' + ROOT + '/' + p;
   t('charts rendered', (await p.$$('.chart svg')).length >= 4 && (await p.$$('.spark svg')).length === 2);
   await p.close();
 
+  p = await open('network');
+  const cnt = await p.evaluate(() => [document.querySelectorAll('.net-node').length, document.querySelectorAll('.net-link').length, document.querySelectorAll('.net-flow').length]);
+  t('network renders nodes + links', cnt[0] === 11 && cnt[1] === 12, cnt.join('/'));
+  t('network: a down link has no traffic', cnt[2] === 11, 'flows=' + cnt[2]);
+  const box = await p.evaluate(() => { const r = document.querySelector('#net1 svg').getBoundingClientRect(); return [r.width, r.height]; });
+  t('network svg fits its host', box[0] > 300 && box[1] > 200 && box[1] <= 530, box.join('x'));
+  await p.focus('.net-node[data-id=db]');
+  const hl = await p.evaluate(() => [document.querySelector('#net1').classList.contains('net-focus'), [...document.querySelectorAll('.net-node.on')].map(n => n.dataset.id).sort().join(',')]);
+  t('network focus lights up neighbours', hl[0] && hl[1] === 'app1,app2,app3,db,repl', hl[1]);
+  t('network tooltip shows', await p.isVisible('#net1 .chart-tip.on'));
+  await p.keyboard.press('Enter');
+  t('network Enter selects and emits mglsk:network', (await p.getAttribute('.net-node[data-id=db]', 'aria-pressed')) === 'true' && /Primary DB/.test(await p.textContent('#net-out')), await p.textContent('#net-out'));
+  await p.keyboard.press('Space');
+  t('network Space deselects', (await p.getAttribute('.net-node[data-id=db]', 'aria-pressed')) === 'false');
+  await p.hover('.net-node[data-id=waf]'); await p.mouse.move(5, 5);
+  t('network focus clears on leave', !(await p.evaluate(() => document.querySelector('#net1').classList.contains('net-focus'))));
+  t('network has accessible names', /Primary DB, Data, online, 4 connections/.test(await p.getAttribute('.net-node[data-id=db]', 'aria-label')), await p.getAttribute('.net-node[data-id=db]', 'aria-label'));
+  t('network has a data table for screen readers', (await p.$$('#net1 table.sr-only')).length === 2);
+  await p.setViewportSize({ width: 420, height: 800 }); await p.waitForTimeout(250);
+  t('network re-renders narrow without overflow', await p.evaluate(() => document.querySelector('#net1 svg').getBoundingClientRect().width <= document.querySelector('#net1').clientWidth + 1));
+  await p.close();
+
   const bad = results.filter(r => !r[1]);
   console.log(results.length, 'checks;', bad.length, 'failed');
   results.forEach(r => console.log(r[1] ? 'PASS' : 'FAIL', r[0], r[2] || ''));

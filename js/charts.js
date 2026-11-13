@@ -4,6 +4,8 @@
  *  MGLSK.charts.bar(el,   { labels:[...], series:[...], stacked:false, ... })
  *  MGLSK.charts.donut(el, { items:[{label, value}], center:'Total' , format })
  *  MGLSK.charts.spark(el, { data:[...], area:true, color:'var(--s2)' })
+ *  MGLSK.charts.network(el, { nodes:[{id, label, x, y, z, group, status, size}], links:[{from, to, status}], title, height, routing })
+ *      isometric node graph: x/y are floor-grid cells, z is elevation; emits 'mglsk:network' when a node is selected
  *
  * Colours come from --s1..--s6, so charts re-theme automatically (CSS only, no re-render needed).
  */
@@ -149,6 +151,94 @@
       host.querySelector('.legend').style.justifyContent = 'center';
     },
 
+    network(host, o) {
+      const nodes = o.nodes || [], links = o.links || [], straight = o.routing === 'straight';
+      const groups = [...new Set(nodes.map(n => n.group || 'nodes'))], gi = n => { const g = n.group || 'nodes'; return (o.colors && o.colors[g]) || groups.indexOf(g) % 6 + 1; };
+      const deg = new Map(nodes.map(n => [n.id, 0]));
+      links.forEach(l => { deg.set(l.from, (deg.get(l.from) || 0) + 1); deg.set(l.to, (deg.get(l.to) || 0) + 1); });
+      const byId = new Map(nodes.map(n => [n.id, n])), z0 = n => n.z || 0, sz = n => .7 * (n.size || 1), ht = n => sz(n) * .8;
+      const P = (x, y, z = 0) => [(x - y) * .866, (x + y) * .5 - z * .8];             // isometric projection, grid units
+      const label = n => n.label || n.id;
+      const STATUS = { ok: 'online', warn: 'degraded', danger: 'down' };
+      mount(host, o, () => {
+        const xs = nodes.map(n => n.x), ys = nodes.map(n => n.y);
+        const [x0, x1, y0, y1] = [Math.min(...xs) - 1, Math.max(...xs) + 1, Math.min(...ys) - 1, Math.max(...ys) + 1];
+        const pts = [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)];
+        nodes.forEach(n => { const h = sz(n) / 2; pts.push(P(n.x - h, n.y - h, z0(n) + ht(n) + .5), P(n.x + h, n.y + h, z0(n) - .35)); });
+        const mnx = Math.min(...pts.map(p => p[0])), mxx = Math.max(...pts.map(p => p[0])), mny = Math.min(...pts.map(p => p[1])), mxy = Math.max(...pts.map(p => p[1]));
+        const W = Math.round(host.clientWidth) || 640, pad = 16, lab = 20;
+        let k = Math.min(110, (W - 2 * pad) / (mxx - mnx || 1));
+        const H = o.height || Math.min(520, Math.round((mxy - mny) * k + 2 * pad + lab));
+        k = Math.min(k, (H - 2 * pad - lab) / (mxy - mny || 1));
+        const ox = (W - (mxx - mnx) * k) / 2 - mnx * k, oy = pad + (H - 2 * pad - lab - (mxy - mny) * k) / 2 - mny * k;
+        const T = (x, y, z) => { const p = P(x, y, z); return [ox + p[0] * k, oy + p[1] * k]; };
+        const d = a => a.map((q, i) => (i ? 'L' : 'M') + q[0].toFixed(1) + ' ' + q[1].toFixed(1)).join('') ;
+
+        const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'group', 'aria-label': o.title || 'Network' });
+        const t = tip(host);
+        // floor plane + grid
+        el('path', { class: 'net-floor', d: d([T(x0, y0), T(x1, y0), T(x1, y1), T(x0, y1)]) + 'Z' }, svg);
+        for (let x = Math.ceil(x0); x <= x1; x++) el('path', { class: 'net-grid', d: d([T(x, y0), T(x, y1)]) }, svg);
+        for (let y = Math.ceil(y0); y <= y1; y++) el('path', { class: 'net-grid', d: d([T(x0, y), T(x1, y)]) }, svg);
+
+        // links: orthogonal routes along the grid axes at the source node's mid-height
+        const linkEls = links.map(l => {
+          const a = byId.get(l.from), b = byId.get(l.to); if (!a || !b) return null;
+          const za = z0(a) + ht(a) / 2, zb = z0(b) + ht(b) / 2;
+          const route = straight ? [[a.x, a.y, za], [b.x, b.y, zb]] : [[a.x, a.y, za], [b.x, a.y, za], [b.x, b.y, za], [b.x, b.y, zb]]
+            .filter((q, i, r) => !i || q[0] !== r[i - 1][0] || q[1] !== r[i - 1][1] || q[2] !== r[i - 1][2]);
+          const g = el('g', { class: 'net-link s' + gi(a), 'data-status': l.status || 'ok' }, svg), path = d(route.map(q => T(...q)));
+          el('path', { class: 'net-edge', d: path }, g);
+          if (l.status !== 'down') el('path', { class: 'net-flow', d: path }, g);
+          return g;
+        });
+
+        // nodes, far to near so nearer cubes paint over farther ones
+        const nodeEls = new Map();
+        [...nodes].sort((a, b) => (a.x + a.y) - (b.x + b.y) || z0(a) - z0(b)).forEach(n => {
+          const h = sz(n) / 2, z = z0(n), zt = z + ht(n), ring = (zz, f) => f.map(([dx, dy]) => T(n.x + dx * h, n.y + dy * h, zz));
+          const A = [-1, -1], B = [1, -1], Cc = [1, 1], D = [-1, 1];
+          const deg_ = deg.get(n.id) || 0, st = STATUS[n.status];
+          const g = el('g', { class: 'net-node s' + gi(n), tabindex: 0, role: 'button', 'aria-pressed': 'false', 'data-id': n.id,
+            'aria-label': `${label(n)}${n.group ? ', ' + n.group : ''}${st ? ', ' + st : ''}, ${deg_} connection${deg_ === 1 ? '' : 's'}` }, svg);
+          if (z) { el('path', { class: 'net-stem', d: d([T(n.x, n.y, 0), T(n.x, n.y, z)]) }, g); el('path', { class: 'net-shadow', d: d(ring(0, [A, B, Cc, D])) + 'Z' }, g); }
+          el('path', { class: 'net-left', d: d([...ring(zt, [Cc, D]), ...ring(z, [D, Cc])]) + 'Z' }, g);
+          el('path', { class: 'net-right', d: d([...ring(zt, [B, Cc]), ...ring(z, [Cc, B])]) + 'Z' }, g);
+          el('path', { class: 'net-top', d: d(ring(zt, [A, B, Cc, D])) + 'Z' }, g);
+          if (n.status) { const c = T(n.x, n.y, zt + .35); el('circle', { class: 'net-status ' + n.status, cx: c[0], cy: c[1], r: 3.5 }, g); }
+          const lp = T(n.x + h, n.y + h, z); el('text', { class: 'net-label', x: lp[0], y: lp[1] + 15, 'text-anchor': 'middle' }, g).textContent = label(n);
+          nodeEls.set(n.id, g);
+          const on = () => {
+            host.classList.add('net-focus');
+            const near = new Set([n.id]);
+            links.forEach((l, i) => { const hit = l.from === n.id || l.to === n.id; linkEls[i] && linkEls[i].classList.toggle('on', hit); if (hit) { near.add(l.from); near.add(l.to); } });
+            nodeEls.forEach((e, id) => e.classList.toggle('on', near.has(id)));
+            const r = g.getBoundingClientRect(), hr = host.getBoundingClientRect();
+            t.innerHTML = `<b>${esc(label(n))}</b>${n.group ? '<br>' + esc(n.group) : ''}${st ? '<br>' + st : ''}<br>${deg_} connection${deg_ === 1 ? '' : 's'}`;
+            t.style.left = r.left + r.width / 2 - hr.left + 'px'; t.style.top = r.top - hr.top + 'px'; t.classList.add('on');
+          };
+          const off = () => { host.classList.remove('net-focus'); svg.querySelectorAll('.on').forEach(e => e.classList.remove('on')); t.classList.remove('on'); };
+          g.addEventListener('mouseenter', on); g.addEventListener('focus', on); g.addEventListener('mouseleave', off); g.addEventListener('blur', off);
+          const pick = () => {
+            const sel = !g.classList.contains('sel');
+            nodeEls.forEach(e => { e.classList.remove('sel'); e.setAttribute('aria-pressed', 'false'); });
+            if (sel) { g.classList.add('sel'); g.setAttribute('aria-pressed', 'true'); }
+            host.dispatchEvent(new CustomEvent('mglsk:network', { bubbles: true, detail: { id: n.id, node: n, selected: sel } }));
+          };
+          g.addEventListener('click', pick);
+          g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+        });
+        return svg;
+      });
+      host.append(srTable((o.title || 'Network') + ' — nodes', ['Node', 'Group', 'Status', 'Connections'], nodes.map(n => [label(n), n.group || '', STATUS[n.status] || '', deg.get(n.id) || 0])));
+      if (links.length) host.append(srTable((o.title || 'Network') + ' — links', ['From', 'To', 'Status'], links.map(l => [label(byId.get(l.from) || { id: l.from }), label(byId.get(l.to) || { id: l.to }), l.status === 'down' ? 'down' : 'up'])));
+      if (groups.length > 1) {
+        const l = document.createElement('div'); l.className = 'legend'; l.style.marginTop = '12px';
+        groups.forEach(g => { const sp = document.createElement('span'); sp.className = 's' + gi({ group: g }); sp.append(document.createElement('i'), g); l.append(sp); });
+        host.append(l);
+      }
+    },
+
     spark(host, o) {
       host.classList.add('spark'); host.innerHTML = '';
       const d = o.data, W = 100, H = 30, min = Math.min(...d), max = Math.max(...d), rng = max - min || 1;
@@ -162,7 +252,7 @@
   };
 
   // re-render responsively when the container width changes
-  ['line', 'bar', 'donut'].forEach(k => {
+  ['line', 'bar', 'donut', 'network'].forEach(k => {
     const fn = charts[k];
     charts[k] = (host, o) => {
       fn(host, o);

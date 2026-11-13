@@ -280,3 +280,34 @@ C('trace', 'Trace', 'Data display', 'Execution trace: nested steps with status, 
   </div>
 </div>
 ''', [('.trace > .trace-row[data-status="ok|error|running"]', 'A step; click the head to expand. Nest steps in <code>.trace-children</code>.'), ('.trace-head', 'Columns: status dot, name (+ <code>.trace-kind</code>), duration, waterfall bar.'), ('.trace-bar i', '<code>--o</code> start offset and <code>--w</code> width as % of the total run.'), ('.trace-body', 'Details (labels + <code>pre</code>).')])
+
+C('network', 'Network', 'Data display', 'Isometric node graph: cubes on a floor grid joined by animated data links. Hover or focus a node to light up its neighbours.', '''
+<div id="net1" style="width:100%"></div>
+<div class="text-sm text-muted mono" id="net-out" role="status">Select a node.</div>
+''', [('MGLSK.charts.network(el, {nodes, links, title, height, routing})', 'Renders the graph. <code>routing</code> is <code>"ortho"</code> (default, links follow the grid axes) or <code>"straight"</code>. <code>colors</code> maps a group to a colour slot 1–6 (default: order of first appearance). Height is automatic unless you pass <code>height</code>.'), ('nodes[]', '<code>{id, label, x, y, z, group, status, size}</code> — <code>x</code>/<code>y</code> are floor-grid cells, <code>z</code> lifts a node onto a floating layer, <code>group</code> picks the colour (<code>--s1…--s6</code>), <code>status</code> is <code>ok|warn|danger</code>, <code>size</code> scales the cube.'), ('links[]', '<code>{from, to, status}</code> — <code>status: "down"</code> draws a red dashed link with no traffic.'), ('mglsk:network', 'Fired on the host when a node is clicked or activated with Enter/Space: <code>detail = {id, node, selected}</code>.'), ('Accessibility', 'Nodes are focusable buttons named with group, status and connection count; a visually-hidden table lists every node and link.'), ('Motion', 'Link traffic is a CSS animation: it stops with <code>prefers-reduced-motion</code> and the CRT toggle.')],
+  script='''
+  const net = document.getElementById('net1');
+  const draw = () => MGLSK.charts.network(net, {
+    title: 'Infrastructure topology', colors: { Data: 5 },
+    nodes: [
+      { id: 'inet', label: 'Internet', group: 'Edge', x: 0, y: 3, z: 1.2, status: 'ok' },
+      { id: 'waf', label: 'WAF', group: 'Security', x: 2, y: 3, status: 'ok' },
+      { id: 'lb', label: 'Load balancer', group: 'Edge', x: 4, y: 3, status: 'ok', size: 1.15 },
+      { id: 'app1', label: 'app-01', group: 'Compute', x: 6, y: 1, status: 'ok' },
+      { id: 'app2', label: 'app-02', group: 'Compute', x: 6, y: 3, status: 'warn' },
+      { id: 'app3', label: 'app-03', group: 'Compute', x: 6, y: 5, status: 'ok' },
+      { id: 'cache', label: 'Cache', group: 'Data', x: 8, y: 0, status: 'ok', size: .8 },
+      { id: 'db', label: 'Primary DB', group: 'Data', x: 8, y: 3, status: 'ok', size: 1.2 },
+      { id: 'repl', label: 'Replica', group: 'Data', x: 8, y: 5.5, status: 'danger' },
+      { id: 'mq', label: 'Queue', group: 'Compute', x: 4, y: 6, status: 'ok', size: .8 },
+      { id: 'siem', label: 'SIEM', group: 'Security', x: 2, y: 0.5, z: 1.6, status: 'ok' },
+    ],
+    links: [
+      { from: 'inet', to: 'waf' }, { from: 'waf', to: 'lb' }, { from: 'lb', to: 'app1' }, { from: 'lb', to: 'app2' }, { from: 'lb', to: 'app3' },
+      { from: 'app1', to: 'cache' }, { from: 'app1', to: 'db' }, { from: 'app2', to: 'db' }, { from: 'app3', to: 'db' },
+      { from: 'db', to: 'repl', status: 'down' }, { from: 'app3', to: 'mq' }, { from: 'waf', to: 'siem' },
+    ],
+  });
+  draw();
+  net.addEventListener('mglsk:network', e => { document.getElementById('net-out').textContent = e.detail.selected ? 'Selected: ' + (e.detail.node.label || e.detail.id) : 'Select a node.'; });
+''')

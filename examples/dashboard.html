@@ -86,6 +86,11 @@
     </div>
 
     <div class="card">
+      <div class="card-head"><h2>Infrastructure</h2><span class="text-xs text-muted mono" id="net-out" role="status">hover a node · click to select</span></div>
+      <div class="card-body"><div id="c-net"></div></div>
+    </div>
+
+    <div class="card">
       <div class="card-head"><h2>Recent orders</h2><a href="#" class="text-sm">View all</a></div>
       <div class="table-toolbar">
         <div class="topbar-search" style="flex:0 1 280px"><i data-icon="search"></i><input class="input input-sm" data-filter-table="#orders" placeholder="Filter orders…" aria-label="Filter orders" style="padding-left:34px"></div>
@@ -132,6 +137,15 @@
     { name: 'Target',  data: [8000,8500,9000,9500,10000,10500,11000,11500,12000,12500,13000,13500] }] });
   C.donut(document.getElementById('c-donut'), { center: 'Orders', items: [{label:'Direct',value:820},{label:'Search',value:540},{label:'Social',value:310},{label:'Email',value:172}] });
   C.bar(document.getElementById('c-bar'), { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], height: 220, series: [{ name: 'Web', data: [120,150,140,180,210,90,60] }, { name: 'App', data: [60,80,75,95,110,70,50] }], stacked: true });
+  C.network(document.getElementById('c-net'), { title: 'Infrastructure topology', height: 360, colors: { Data: 5 }, nodes: [
+    { id: 'lb', label: 'Gateway', group: 'Edge', x: 0, y: 2, status: 'ok', size: 1.1 },
+    { id: 'a1', label: 'api-01', group: 'Compute', x: 2, y: 0.5, status: 'ok' },
+    { id: 'a2', label: 'api-02', group: 'Compute', x: 2, y: 3.5, status: 'warn' },
+    { id: 'db', label: 'Orders DB', group: 'Data', x: 4, y: 2, status: 'ok', size: 1.2 },
+    { id: 'mq', label: 'Queue', group: 'Compute', x: 4, y: 4.5, status: 'ok', size: .8 },
+    { id: 'sec', label: 'SIEM', group: 'Security', x: 1, y: 2, z: 1.8, status: 'ok', size: .8 }],
+    links: [{ from: 'lb', to: 'a1' }, { from: 'lb', to: 'a2' }, { from: 'a1', to: 'db' }, { from: 'a2', to: 'db' }, { from: 'a2', to: 'mq' }, { from: 'lb', to: 'sec' }] });
+  document.getElementById('c-net').addEventListener('mglsk:network', e => { document.getElementById('net-out').textContent = e.detail.selected ? 'selected: ' + e.detail.node.label : 'hover a node · click to select'; });
   [[ 'sp1',[3,4,3,5,6,5,7,8,7,9] ],[ 'sp2',[5,4,6,5,7,6,8,7,9,9] ],[ 'sp3',[8,7,8,6,7,5,6,5,6,5],'var(--s4)' ],[ 'sp4',[4,5,4,3,4,3,3,2,3,2],'var(--s2)' ]]
     .forEach(([id, data, color]) => C.spark(document.getElementById(id), { data, color }));
 
